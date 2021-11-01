@@ -5,22 +5,31 @@ CMakeFiles/app.dir/Channel.cc.o: ../Channel.cc
 CMakeFiles/app.dir/Channel.cc.o: ../Channel.h
 CMakeFiles/app.dir/Channel.cc.o: ../EventLoop.h
 CMakeFiles/app.dir/Channel.cc.o: ../Log.h
+CMakeFiles/app.dir/Channel.cc.o: ../Timestamp.h
 
 CMakeFiles/app.dir/Epoller.cc.o: ../Channel.h
 CMakeFiles/app.dir/Epoller.cc.o: ../Epoller.cc
 CMakeFiles/app.dir/Epoller.cc.o: ../Epoller.h
 CMakeFiles/app.dir/Epoller.cc.o: ../EventLoop.h
 CMakeFiles/app.dir/Epoller.cc.o: ../Log.h
+CMakeFiles/app.dir/Epoller.cc.o: ../Timestamp.h
 
 CMakeFiles/app.dir/EventLoop.cc.o: ../Channel.h
+CMakeFiles/app.dir/EventLoop.cc.o: ../Epoller.h
 CMakeFiles/app.dir/EventLoop.cc.o: ../EventLoop.cc
 CMakeFiles/app.dir/EventLoop.cc.o: ../EventLoop.h
 CMakeFiles/app.dir/EventLoop.cc.o: ../Log.h
+CMakeFiles/app.dir/EventLoop.cc.o: ../Timestamp.h
+
+CMakeFiles/app.dir/Log.cc.o: ../Log.cc
+CMakeFiles/app.dir/Log.cc.o: ../Log.h
 
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.cc
+CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.h
 
-CMakeFiles/app.dir/main.cc.o: ../Channel.h
-CMakeFiles/app.dir/main.cc.o: ../EventLoop.h
-CMakeFiles/app.dir/main.cc.o: ../Log.h
-CMakeFiles/app.dir/main.cc.o: ../main.cc
+CMakeFiles/app.dir/test2.cc.o: ../Channel.h
+CMakeFiles/app.dir/test2.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/test2.cc.o: ../Log.h
+CMakeFiles/app.dir/test2.cc.o: ../Timestamp.h
+CMakeFiles/app.dir/test2.cc.o: ../test2.cc
 

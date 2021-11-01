@@ -204,6 +204,33 @@ EventLoop.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/EventLoop.cc.s
 .PHONY : EventLoop.cc.s
 
+Log.o: Log.cc.o
+
+.PHONY : Log.o
+
+# target to build an object file
+Log.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Log.cc.o
+.PHONY : Log.cc.o
+
+Log.i: Log.cc.i
+
+.PHONY : Log.i
+
+# target to preprocess a source file
+Log.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Log.cc.i
+.PHONY : Log.cc.i
+
+Log.s: Log.cc.s
+
+.PHONY : Log.s
+
+# target to generate assembly for a file
+Log.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Log.cc.s
+.PHONY : Log.cc.s
+
 Timestamp.o: Timestamp.cc.o
 
 .PHONY : Timestamp.o
@@ -231,32 +258,32 @@ Timestamp.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-main.o: main.cc.o
+test2.o: test2.cc.o
 
-.PHONY : main.o
+.PHONY : test2.o
 
 # target to build an object file
-main.cc.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cc.o
-.PHONY : main.cc.o
+test2.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test2.cc.o
+.PHONY : test2.cc.o
 
-main.i: main.cc.i
+test2.i: test2.cc.i
 
-.PHONY : main.i
+.PHONY : test2.i
 
 # target to preprocess a source file
-main.cc.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cc.i
-.PHONY : main.cc.i
+test2.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test2.cc.i
+.PHONY : test2.cc.i
 
-main.s: main.cc.s
+test2.s: test2.cc.s
 
-.PHONY : main.s
+.PHONY : test2.s
 
 # target to generate assembly for a file
-main.cc.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/main.cc.s
-.PHONY : main.cc.s
+test2.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test2.cc.s
+.PHONY : test2.cc.s
 
 # Help Target
 help:
@@ -276,12 +303,15 @@ help:
 	@echo "... EventLoop.o"
 	@echo "... EventLoop.i"
 	@echo "... EventLoop.s"
+	@echo "... Log.o"
+	@echo "... Log.i"
+	@echo "... Log.s"
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... test2.o"
+	@echo "... test2.i"
+	@echo "... test2.s"
 .PHONY : help
 
 

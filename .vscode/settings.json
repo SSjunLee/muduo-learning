@@ -46,6 +46,7 @@
         "condition_variable": "cpp",
         "eventloop cc": "cpp",
         "queue": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "cstddef": "cpp"
     }
 }

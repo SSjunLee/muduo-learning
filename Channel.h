@@ -28,6 +28,7 @@ public:
     int index(){return index_;}
     void set_index(int idx){index_ = idx;}
     EventLoop* ownerLoop(){return loop_;}
+    std::string eventsToString(int fd,int ev);
 
 
 private:

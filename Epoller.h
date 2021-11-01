@@ -2,13 +2,16 @@
 #include<vector>
 #include<map>
 #include"Timestamp.h"
-class EventLoop;
+#include"EventLoop.h"
 class Channel;
 class Epoller
 {
 
 private:
     static const int defaultEventsSize = 16;
+    static const int knew = -1;
+    static const int kadded = 1;
+    static const int kdeleted = 1;
 
 public:
     typedef std::vector<struct epoll_event> EventList;
@@ -32,5 +35,7 @@ public:
 private:
     void fillActiveChannels(int numEvents,ChannelList*activeChannels) const;    
     inline void assertInLoopThread(){ownerLoop_->assertInLoopThread();}
+    void update(int op, Channel* channel);
+    const char* opToString(int op);
 };
 
