@@ -14,6 +14,7 @@ Epoller::Epoller(EventLoop *loop)
     if (epfd_ < 0)
     {
         LOG_SYSFATAL << "epfd 错误 " << ENDL;
+        abort();
     }
 }
 
@@ -29,7 +30,7 @@ Timestamp Epoller::poll(ChannelList *activeChannels, int timeOutMs)
     Timestamp time = Timestamp::now();
     if (numEvents > 0)
     {
-        LOG << numEvents << " events happened..." << ENDL;
+        //LOG << numEvents << " events happened..." << ENDL;
         fillActiveChannels(numEvents, activeChannels);
         if (static_cast<size_t>(numEvents) == events_.size())
             events_.resize(2 * events_.size());

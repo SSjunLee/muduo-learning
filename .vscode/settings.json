@@ -47,6 +47,7 @@
         "eventloop cc": "cpp",
         "queue": "cpp",
         "cstring": "cpp",
-        "cstddef": "cpp"
+        "cstddef": "cpp",
+        "random": "cpp"
     }
 }

@@ -64,6 +64,3 @@ std::string Channel::eventsToString(int fd, int ev)
     return oss.str();
 }
 
-Channel::~Channel()
-{
-}

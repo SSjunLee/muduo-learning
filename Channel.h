@@ -1,14 +1,13 @@
 #pragma once
 #include<functional>
-
+#include"nocopyable.h"
 class EventLoop;
-class Channel
+class Channel:nocopyable
 {
     
 public:
     typedef std::function<void()> EventCallback;
     Channel(EventLoop* loop, int fd);
-    ~Channel();
 
     void handleEvent();
     void setReadCallback_(const EventCallback&cb){readCallback_ = cb;}
