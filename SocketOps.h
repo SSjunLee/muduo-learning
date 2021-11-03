@@ -33,7 +33,10 @@ namespace sockets
     }
 
     int createNoBlockingOrDie();
-
+    void bindOrDie(int sockfd,const struct sockaddr_in &sockAddr);
+    void listenOrDie(int sockfd);
+    int  accept(int sockfd,struct sockaddr_in*addr);
+    void close(int fd);
     void fromHostPort(const char*ip,uint16_t port,struct sockaddr_in*addr);
     void toHostPort(char*buf,size_t size,const struct sockaddr_in*addr);
 };

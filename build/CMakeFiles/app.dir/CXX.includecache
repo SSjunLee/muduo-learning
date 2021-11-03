@@ -9,6 +9,12 @@
 /home/ljn/文档/jnserver/Acceptor.cc
 Acceptor.h
 /home/ljn/文档/jnserver/Acceptor.h
+EventLoop.h
+/home/ljn/文档/jnserver/EventLoop.h
+InetAddress.h
+/home/ljn/文档/jnserver/InetAddress.h
+SocketOps.h
+/home/ljn/文档/jnserver/SocketOps.h
 
 /home/ljn/文档/jnserver/Acceptor.h
 Socket.h
@@ -104,6 +110,20 @@ condition_variable
 mutex
 -
 
+/home/ljn/文档/jnserver/InetAddress.cc
+cstring
+-
+SocketOps.h
+/home/ljn/文档/jnserver/SocketOps.h
+InetAddress.h
+/home/ljn/文档/jnserver/InetAddress.h
+
+/home/ljn/文档/jnserver/InetAddress.h
+netinet/in.h
+-
+iostream
+-
+
 /home/ljn/文档/jnserver/Log.cc
 Log.h
 /home/ljn/文档/jnserver/Log.h
@@ -114,7 +134,19 @@ iostream
 thread
 -
 
+/home/ljn/文档/jnserver/Socket.cc
+Socket.h
 /home/ljn/文档/jnserver/Socket.h
+SocketOps.h
+/home/ljn/文档/jnserver/SocketOps.h
+cstring
+-
+InetAddress.h
+/home/ljn/文档/jnserver/InetAddress.h
+
+/home/ljn/文档/jnserver/Socket.h
+Type.h
+/home/ljn/文档/jnserver/Type.h
 
 /home/ljn/文档/jnserver/SocketOps.cc
 sys/socket.h
@@ -123,12 +155,18 @@ sys/types.h
 -
 netinet/in.h
 -
+arpa/inet.h
+-
+unistd.h
+-
 SocketOps.h
 /home/ljn/文档/jnserver/SocketOps.h
 Log.h
 /home/ljn/文档/jnserver/Log.h
 
 /home/ljn/文档/jnserver/SocketOps.h
+netinet/in.h
+-
 
 /home/ljn/文档/jnserver/TimeQueue.cc
 Timer.h
@@ -204,11 +242,15 @@ nocopyable.h
 
 /home/ljn/文档/jnserver/nocopyable.h
 
-/home/ljn/文档/jnserver/test5.cc
+/home/ljn/文档/jnserver/test6.cc
 EventLoop.h
 /home/ljn/文档/jnserver/EventLoop.h
-EventLoopThread.h
-/home/ljn/文档/jnserver/EventLoopThread.h
-stdio.h
+Acceptor.h
+/home/ljn/文档/jnserver/Acceptor.h
+InetAddress.h
+/home/ljn/文档/jnserver/InetAddress.h
+SocketOps.h
+/home/ljn/文档/jnserver/SocketOps.h
+thread
 -
 

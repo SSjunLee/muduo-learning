@@ -258,6 +258,33 @@ EventLoopThread.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/EventLoopThread.cc.s
 .PHONY : EventLoopThread.cc.s
 
+InetAddress.o: InetAddress.cc.o
+
+.PHONY : InetAddress.o
+
+# target to build an object file
+InetAddress.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/InetAddress.cc.o
+.PHONY : InetAddress.cc.o
+
+InetAddress.i: InetAddress.cc.i
+
+.PHONY : InetAddress.i
+
+# target to preprocess a source file
+InetAddress.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/InetAddress.cc.i
+.PHONY : InetAddress.cc.i
+
+InetAddress.s: InetAddress.cc.s
+
+.PHONY : InetAddress.s
+
+# target to generate assembly for a file
+InetAddress.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/InetAddress.cc.s
+.PHONY : InetAddress.cc.s
+
 Log.o: Log.cc.o
 
 .PHONY : Log.o
@@ -284,6 +311,33 @@ Log.s: Log.cc.s
 Log.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Log.cc.s
 .PHONY : Log.cc.s
+
+Socket.o: Socket.cc.o
+
+.PHONY : Socket.o
+
+# target to build an object file
+Socket.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Socket.cc.o
+.PHONY : Socket.cc.o
+
+Socket.i: Socket.cc.i
+
+.PHONY : Socket.i
+
+# target to preprocess a source file
+Socket.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Socket.cc.i
+.PHONY : Socket.cc.i
+
+Socket.s: Socket.cc.s
+
+.PHONY : Socket.s
+
+# target to generate assembly for a file
+Socket.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Socket.cc.s
+.PHONY : Socket.cc.s
 
 SocketOps.o: SocketOps.cc.o
 
@@ -393,32 +447,32 @@ Timestamp.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-test5.o: test5.cc.o
+test6.o: test6.cc.o
 
-.PHONY : test5.o
+.PHONY : test6.o
 
 # target to build an object file
-test5.cc.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test5.cc.o
-.PHONY : test5.cc.o
+test6.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.o
+.PHONY : test6.cc.o
 
-test5.i: test5.cc.i
+test6.i: test6.cc.i
 
-.PHONY : test5.i
+.PHONY : test6.i
 
 # target to preprocess a source file
-test5.cc.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test5.cc.i
-.PHONY : test5.cc.i
+test6.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.i
+.PHONY : test6.cc.i
 
-test5.s: test5.cc.s
+test6.s: test6.cc.s
 
-.PHONY : test5.s
+.PHONY : test6.s
 
 # target to generate assembly for a file
-test5.cc.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test5.cc.s
-.PHONY : test5.cc.s
+test6.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.s
+.PHONY : test6.cc.s
 
 # Help Target
 help:
@@ -444,9 +498,15 @@ help:
 	@echo "... EventLoopThread.o"
 	@echo "... EventLoopThread.i"
 	@echo "... EventLoopThread.s"
+	@echo "... InetAddress.o"
+	@echo "... InetAddress.i"
+	@echo "... InetAddress.s"
 	@echo "... Log.o"
 	@echo "... Log.i"
 	@echo "... Log.s"
+	@echo "... Socket.o"
+	@echo "... Socket.i"
+	@echo "... Socket.s"
 	@echo "... SocketOps.o"
 	@echo "... SocketOps.i"
 	@echo "... SocketOps.s"
@@ -459,9 +519,9 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... test5.o"
-	@echo "... test5.i"
-	@echo "... test5.s"
+	@echo "... test6.o"
+	@echo "... test6.i"
+	@echo "... test6.s"
 .PHONY : help
 
 

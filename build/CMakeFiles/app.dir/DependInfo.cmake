@@ -9,12 +9,14 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ljn/文档/jnserver/Epoller.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Epoller.cc.o"
   "/home/ljn/文档/jnserver/EventLoop.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/EventLoop.cc.o"
   "/home/ljn/文档/jnserver/EventLoopThread.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/EventLoopThread.cc.o"
+  "/home/ljn/文档/jnserver/InetAddress.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/InetAddress.cc.o"
   "/home/ljn/文档/jnserver/Log.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Log.cc.o"
+  "/home/ljn/文档/jnserver/Socket.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Socket.cc.o"
   "/home/ljn/文档/jnserver/SocketOps.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/SocketOps.cc.o"
   "/home/ljn/文档/jnserver/TimeQueue.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TimeQueue.cc.o"
   "/home/ljn/文档/jnserver/Timer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timer.cc.o"
   "/home/ljn/文档/jnserver/Timestamp.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timestamp.cc.o"
-  "/home/ljn/文档/jnserver/test5.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test5.cc.o"
+  "/home/ljn/文档/jnserver/test6.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test6.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

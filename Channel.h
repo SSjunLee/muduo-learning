@@ -10,6 +10,7 @@ public:
     Channel(EventLoop* loop, int fd);
 
     void handleEvent();
+    //设置事件的回调函数
     void setReadCallback_(const EventCallback&cb){readCallback_ = cb;}
     void setWriteCallback(const EventCallback&cb){writeCallback_ = cb;}
     void setErrorCallback(const EventCallback&cb){errorCallback_ = cb;}
@@ -19,6 +20,7 @@ public:
     void set_revents(int revents){revents_ = revents;}
     bool isNoneEvent() const { return events_ == kNoneEvent;}
 
+    //注册事件到epoll
     void enableReading(){events_|=kReadEvent;update();}
     void enableWriting(){events_|=kWriteEvent;update();}
     void disableReading(){events_&=~kReadEvent;update();}

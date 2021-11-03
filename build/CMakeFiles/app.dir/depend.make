@@ -4,7 +4,15 @@
 CMakeFiles/app.dir/Acceptor.cc.o: ../Acceptor.cc
 CMakeFiles/app.dir/Acceptor.cc.o: ../Acceptor.h
 CMakeFiles/app.dir/Acceptor.cc.o: ../Channel.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../InetAddress.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../Log.h
 CMakeFiles/app.dir/Acceptor.cc.o: ../Socket.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../SocketOps.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../TimeQueue.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../TimerId.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../Timestamp.h
+CMakeFiles/app.dir/Acceptor.cc.o: ../Type.h
 CMakeFiles/app.dir/Acceptor.cc.o: ../nocopyable.h
 
 CMakeFiles/app.dir/Channel.cc.o: ../Channel.cc
@@ -50,8 +58,19 @@ CMakeFiles/app.dir/EventLoopThread.cc.o: ../Timestamp.h
 CMakeFiles/app.dir/EventLoopThread.cc.o: ../Type.h
 CMakeFiles/app.dir/EventLoopThread.cc.o: ../nocopyable.h
 
+CMakeFiles/app.dir/InetAddress.cc.o: ../InetAddress.cc
+CMakeFiles/app.dir/InetAddress.cc.o: ../InetAddress.h
+CMakeFiles/app.dir/InetAddress.cc.o: ../SocketOps.h
+
 CMakeFiles/app.dir/Log.cc.o: ../Log.cc
 CMakeFiles/app.dir/Log.cc.o: ../Log.h
+
+CMakeFiles/app.dir/Socket.cc.o: ../InetAddress.h
+CMakeFiles/app.dir/Socket.cc.o: ../Socket.cc
+CMakeFiles/app.dir/Socket.cc.o: ../Socket.h
+CMakeFiles/app.dir/Socket.cc.o: ../SocketOps.h
+CMakeFiles/app.dir/Socket.cc.o: ../Type.h
+CMakeFiles/app.dir/Socket.cc.o: ../nocopyable.h
 
 CMakeFiles/app.dir/SocketOps.cc.o: ../Log.h
 CMakeFiles/app.dir/SocketOps.cc.o: ../SocketOps.cc
@@ -77,14 +96,17 @@ CMakeFiles/app.dir/Timer.cc.o: ../nocopyable.h
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.cc
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.h
 
-CMakeFiles/app.dir/test5.cc.o: ../Channel.h
-CMakeFiles/app.dir/test5.cc.o: ../EventLoop.h
-CMakeFiles/app.dir/test5.cc.o: ../EventLoopThread.h
-CMakeFiles/app.dir/test5.cc.o: ../Log.h
-CMakeFiles/app.dir/test5.cc.o: ../TimeQueue.h
-CMakeFiles/app.dir/test5.cc.o: ../TimerId.h
-CMakeFiles/app.dir/test5.cc.o: ../Timestamp.h
-CMakeFiles/app.dir/test5.cc.o: ../Type.h
-CMakeFiles/app.dir/test5.cc.o: ../nocopyable.h
-CMakeFiles/app.dir/test5.cc.o: ../test5.cc
+CMakeFiles/app.dir/test6.cc.o: ../Acceptor.h
+CMakeFiles/app.dir/test6.cc.o: ../Channel.h
+CMakeFiles/app.dir/test6.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/test6.cc.o: ../InetAddress.h
+CMakeFiles/app.dir/test6.cc.o: ../Log.h
+CMakeFiles/app.dir/test6.cc.o: ../Socket.h
+CMakeFiles/app.dir/test6.cc.o: ../SocketOps.h
+CMakeFiles/app.dir/test6.cc.o: ../TimeQueue.h
+CMakeFiles/app.dir/test6.cc.o: ../TimerId.h
+CMakeFiles/app.dir/test6.cc.o: ../Timestamp.h
+CMakeFiles/app.dir/test6.cc.o: ../Type.h
+CMakeFiles/app.dir/test6.cc.o: ../nocopyable.h
+CMakeFiles/app.dir/test6.cc.o: ../test6.cc
 

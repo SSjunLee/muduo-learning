@@ -11,9 +11,8 @@ public:
     int fd() const {return sockFd_;}
     void bindAddress(const InetAddress& localAddress);
     void listen();
-    void accept(InetAddress* address);
+    int accept(InetAddress* perraddr);
     void setReusedAddr(bool on);
-
 private:
     int sockFd_;
   
