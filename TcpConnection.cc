@@ -41,7 +41,7 @@ void TcpConnection::handleWrite() {}
 void TcpConnection::handleClose()
 {
   loop_->assertInLoopThread();
-  LOG << "TcpConnection::handleClose() state = " << state_;
+  LOG << "TcpConnection::handleClose() state = " << state_<<ENDL;
   channel_->disableAll();
   closeCallback_(shared_from_this());
 }
@@ -74,6 +74,5 @@ void TcpConnection::connectionDestroyed()
   state_ = kDisConnected;
   channel_->disableAll();
   connectionCallback_(shared_from_this());
-  
-
+  loop_->removeChannel(channel_.get());
 }

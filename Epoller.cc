@@ -87,8 +87,9 @@ void Epoller::update(int op, Channel *channel)
     event.events = channel->events();
     LOG << "epoll_ctl op =" << opToString(op) << "event = {" << channel->eventsToString(channel->fd(), channel->events()) << " }" << ENDL;
     if (::epoll_ctl(epfd_, op, channel->fd(), &event) < 0)
-    {
-        LOG_SYSFATAL << " epoll ctl op = " << opToString(op) << " ";
+    {   
+        if(op != EPOLL_CTL_DEL)
+        LOG_SYSFATAL << " epoll ctl op = " << opToString(op) << " "<<ENDL;
     }
 }
 
@@ -96,6 +97,8 @@ void Epoller::updateChannel(Channel *channel)
 {
     assertInLoopThread();
     const int type = channel->index();
+    LOG_DEBUG<<"fd = "<<channel->fd()<<" events = "<<channel->events()<<" type =  "<<
+    type<<ENDL;
     if (type == knew || type == kdeleted)
     {
         int fd = channel->fd();

@@ -24,7 +24,7 @@ void sockets::bindOrDie(int sockfd, const struct sockaddr_in &sockAddr)
     int ret = ::bind(sockfd, reinterpret_cast<const struct sockaddr *>(&sockAddr), sizeof(sockAddr));
     if (ret < 0)
     {
-        LOG_SYSFATAL << "sockets::bindOrDie";
+        LOG_SYSFATAL << "sockets::bindOrDie"<<ENDL;
     }
 }
 
@@ -65,10 +65,10 @@ int sockets::accept(int sockfd, struct sockaddr_in *addr)
         case ENOTSOCK:
         case EOPNOTSUPP:
             // unexpected errors
-            LOG_SYSFATAL << "unexpected error of ::accept " << savedErrno;
+            LOG_SYSFATAL << "unexpected error of ::accept " << savedErrno<<ENDL;
             break;
         default:
-            LOG_SYSFATAL << "unknown error of ::accept " << savedErrno;
+            LOG_SYSFATAL << "unknown error of ::accept " << savedErrno<<ENDL;
             break;
         }
     }
@@ -90,7 +90,7 @@ void sockets::fromHostPort(const char *ip, uint16_t port, struct sockaddr_in *ad
     addr->sin_port = hostToNetwork16(port);
     if (::inet_pton(AF_INET, ip, &addr->sin_addr) <= 0)
     {
-        LOG_WARN << "sockets::fromHostPort";
+        LOG_WARN << "sockets::fromHostPort"<<ENDL;
     }
 }
 

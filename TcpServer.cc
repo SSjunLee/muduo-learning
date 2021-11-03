@@ -25,7 +25,6 @@ void TcpServer::newConnection(int sockfd, const InetAddress &peerAddr)
     std::string connName = name_ + buf;
 
     LOG << "TcpServer::newConnection [" << name_ << "] - new connection [" << connName << "] from " << peerAddr.toHostPort();
-
     InetAddress localAddr(sockets::getLocalAddr(sockfd));
 
     TcpConnectionPtr connectionPtr =
