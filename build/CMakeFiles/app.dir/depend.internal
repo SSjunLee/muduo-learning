@@ -76,6 +76,36 @@ CMakeFiles/app.dir/SocketOps.cc.o
  /home/ljn/文档/jnserver/Log.h
  /home/ljn/文档/jnserver/SocketOps.cc
  /home/ljn/文档/jnserver/SocketOps.h
+CMakeFiles/app.dir/TcpConnection.cc.o
+ /home/ljn/文档/jnserver/Channel.h
+ /home/ljn/文档/jnserver/EventLoop.h
+ /home/ljn/文档/jnserver/InetAddress.h
+ /home/ljn/文档/jnserver/Log.h
+ /home/ljn/文档/jnserver/Socket.h
+ /home/ljn/文档/jnserver/SocketOps.h
+ /home/ljn/文档/jnserver/TcpConnection.cc
+ /home/ljn/文档/jnserver/TcpConnection.h
+ /home/ljn/文档/jnserver/TimeQueue.h
+ /home/ljn/文档/jnserver/TimerId.h
+ /home/ljn/文档/jnserver/Timestamp.h
+ /home/ljn/文档/jnserver/Type.h
+ /home/ljn/文档/jnserver/nocopyable.h
+CMakeFiles/app.dir/TcpServer.cc.o
+ /home/ljn/文档/jnserver/Acceptor.h
+ /home/ljn/文档/jnserver/Channel.h
+ /home/ljn/文档/jnserver/EventLoop.h
+ /home/ljn/文档/jnserver/InetAddress.h
+ /home/ljn/文档/jnserver/Log.h
+ /home/ljn/文档/jnserver/Socket.h
+ /home/ljn/文档/jnserver/SocketOps.h
+ /home/ljn/文档/jnserver/TcpConnection.h
+ /home/ljn/文档/jnserver/TcpServer.cc
+ /home/ljn/文档/jnserver/TcpServer.h
+ /home/ljn/文档/jnserver/TimeQueue.h
+ /home/ljn/文档/jnserver/TimerId.h
+ /home/ljn/文档/jnserver/Timestamp.h
+ /home/ljn/文档/jnserver/Type.h
+ /home/ljn/文档/jnserver/nocopyable.h
 CMakeFiles/app.dir/TimeQueue.cc.o
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
@@ -96,17 +126,16 @@ CMakeFiles/app.dir/Timer.cc.o
 CMakeFiles/app.dir/Timestamp.cc.o
  /home/ljn/文档/jnserver/Timestamp.cc
  /home/ljn/文档/jnserver/Timestamp.h
-CMakeFiles/app.dir/test6.cc.o
- /home/ljn/文档/jnserver/Acceptor.h
+CMakeFiles/app.dir/test8.cc.o
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
  /home/ljn/文档/jnserver/InetAddress.h
  /home/ljn/文档/jnserver/Log.h
- /home/ljn/文档/jnserver/Socket.h
- /home/ljn/文档/jnserver/SocketOps.h
+ /home/ljn/文档/jnserver/TcpConnection.h
+ /home/ljn/文档/jnserver/TcpServer.h
  /home/ljn/文档/jnserver/TimeQueue.h
  /home/ljn/文档/jnserver/TimerId.h
  /home/ljn/文档/jnserver/Timestamp.h
  /home/ljn/文档/jnserver/Type.h
  /home/ljn/文档/jnserver/nocopyable.h
- /home/ljn/文档/jnserver/test6.cc
+ /home/ljn/文档/jnserver/test8.cc

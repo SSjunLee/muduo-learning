@@ -2,6 +2,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include<cstring>
 #include <unistd.h>
 #include "SocketOps.h"
 #include "Log.h"
@@ -99,4 +100,31 @@ void sockets::toHostPort(char *buf, size_t size, const struct sockaddr_in *addr)
     ::inet_ntop(AF_INET, &addr->sin_addr, host, sizeof host);
     uint16_t port = hostToNetwork16(addr->sin_port);
     snprintf(buf, size, "%s:%u", host, port);
+}
+
+
+struct sockaddr_in sockets::getLocalAddr(int sockfd)
+{
+    struct sockaddr_in res;
+    bzero(&res,sizeof(res));
+    socklen_t len = sizeof(res);
+    int ret = ::getsockname(sockfd,reinterpret_cast<struct sockaddr*>(&res),&len);
+    if(ret < 0)
+    {
+        LOG_SYSFATAL<<"sockets::getLocalAddr "<<ENDL;
+    }
+    return res;
+}
+
+int sockets::getSocketError(int fd){
+    int optval;
+    socklen_t optlen = sizeof(optval);
+    if(::getsockopt(fd,SOL_SOCKET,SO_ERROR,&optval,&optlen) < 0)
+    {
+        return errno;
+    }else 
+    {
+        return optval;
+    }
+
 }

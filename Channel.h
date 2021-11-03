@@ -8,13 +8,13 @@ class Channel:nocopyable
 public:
     typedef std::function<void()> EventCallback;
     Channel(EventLoop* loop, int fd);
-
+    ~Channel();
     void handleEvent();
     //设置事件的回调函数
     void setReadCallback_(const EventCallback&cb){readCallback_ = cb;}
     void setWriteCallback(const EventCallback&cb){writeCallback_ = cb;}
     void setErrorCallback(const EventCallback&cb){errorCallback_ = cb;}
-    
+    void setCloseCallback(const EventCallback&cb){closeCallback_ = cb;}
     int fd() const {return fd_;}
     int events() const {return events_;}
     void set_revents(int revents){revents_ = revents;}
@@ -25,6 +25,7 @@ public:
     void enableWriting(){events_|=kWriteEvent;update();}
     void disableReading(){events_&=~kReadEvent;update();}
     void disableWriting(){events_&=~kWriteEvent;update();}
+    void disableAll(){events_ = kNoneEvent;update();}
 
     int index(){return index_;}
     void set_index(int idx){index_ = idx;}
@@ -46,10 +47,11 @@ private:
     int events_; //用户关心的事件
     int revents_;//激活的事件
     int index_;    
-
+    bool eventHandling_;
     EventCallback readCallback_;
     EventCallback writeCallback_;
     EventCallback errorCallback_;
+    EventCallback closeCallback_;
 };
 
 

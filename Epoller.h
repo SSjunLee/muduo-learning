@@ -32,6 +32,7 @@ public:
     ~Epoller();
     //修改io事件，必须被loop线程调用
     void updateChannel(Channel*channel);
+    void removeChannel(Channel*channel);
 private:
     void fillActiveChannels(int numEvents,ChannelList*activeChannels) const;    
     inline void assertInLoopThread(){ownerLoop_->assertInLoopThread();}

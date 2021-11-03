@@ -366,6 +366,60 @@ SocketOps.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/SocketOps.cc.s
 .PHONY : SocketOps.cc.s
 
+TcpConnection.o: TcpConnection.cc.o
+
+.PHONY : TcpConnection.o
+
+# target to build an object file
+TcpConnection.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpConnection.cc.o
+.PHONY : TcpConnection.cc.o
+
+TcpConnection.i: TcpConnection.cc.i
+
+.PHONY : TcpConnection.i
+
+# target to preprocess a source file
+TcpConnection.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpConnection.cc.i
+.PHONY : TcpConnection.cc.i
+
+TcpConnection.s: TcpConnection.cc.s
+
+.PHONY : TcpConnection.s
+
+# target to generate assembly for a file
+TcpConnection.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpConnection.cc.s
+.PHONY : TcpConnection.cc.s
+
+TcpServer.o: TcpServer.cc.o
+
+.PHONY : TcpServer.o
+
+# target to build an object file
+TcpServer.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpServer.cc.o
+.PHONY : TcpServer.cc.o
+
+TcpServer.i: TcpServer.cc.i
+
+.PHONY : TcpServer.i
+
+# target to preprocess a source file
+TcpServer.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpServer.cc.i
+.PHONY : TcpServer.cc.i
+
+TcpServer.s: TcpServer.cc.s
+
+.PHONY : TcpServer.s
+
+# target to generate assembly for a file
+TcpServer.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpServer.cc.s
+.PHONY : TcpServer.cc.s
+
 TimeQueue.o: TimeQueue.cc.o
 
 .PHONY : TimeQueue.o
@@ -447,32 +501,32 @@ Timestamp.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-test6.o: test6.cc.o
+test8.o: test8.cc.o
 
-.PHONY : test6.o
+.PHONY : test8.o
 
 # target to build an object file
-test6.cc.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.o
-.PHONY : test6.cc.o
+test8.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.o
+.PHONY : test8.cc.o
 
-test6.i: test6.cc.i
+test8.i: test8.cc.i
 
-.PHONY : test6.i
+.PHONY : test8.i
 
 # target to preprocess a source file
-test6.cc.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.i
-.PHONY : test6.cc.i
+test8.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.i
+.PHONY : test8.cc.i
 
-test6.s: test6.cc.s
+test8.s: test8.cc.s
 
-.PHONY : test6.s
+.PHONY : test8.s
 
 # target to generate assembly for a file
-test6.cc.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.s
-.PHONY : test6.cc.s
+test8.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.s
+.PHONY : test8.cc.s
 
 # Help Target
 help:
@@ -510,6 +564,12 @@ help:
 	@echo "... SocketOps.o"
 	@echo "... SocketOps.i"
 	@echo "... SocketOps.s"
+	@echo "... TcpConnection.o"
+	@echo "... TcpConnection.i"
+	@echo "... TcpConnection.s"
+	@echo "... TcpServer.o"
+	@echo "... TcpServer.i"
+	@echo "... TcpServer.s"
 	@echo "... TimeQueue.o"
 	@echo "... TimeQueue.i"
 	@echo "... TimeQueue.s"
@@ -519,9 +579,9 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... test6.o"
-	@echo "... test6.i"
-	@echo "... test6.s"
+	@echo "... test8.o"
+	@echo "... test8.i"
+	@echo "... test8.s"
 .PHONY : help
 
 

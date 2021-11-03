@@ -82,16 +82,16 @@ void EventLoop::doPendingFunctors()
         UniqueLockGuard lg(mutex_);
         pendingFunctors_.swap(functors);
     }
-    for(auto& functor:functors)
+    for (auto &functor : functors)
         functor();
 
-    callPendingFunctors_ = false;    
+    callPendingFunctors_ = false;
 }
 
-void EventLoop::quit() 
+void EventLoop::quit()
 {
     quit_ = true;
-    if(!isInLoopThread())
+    if (!isInLoopThread())
         wakeup();
 }
 
@@ -100,6 +100,13 @@ void EventLoop::updateChannel(Channel *c)
     assert(c->ownerLoop() == this);
     assertInLoopThread();
     poller_->updateChannel(c);
+}
+
+void EventLoop::removeChannel(Channel *c)
+{
+    assert(c->ownerLoop() == this);
+    assertInLoopThread();
+    poller_->removeChannel(c);
 }
 
 //如果用户在当前IO线程调用这个函数， 回调会同步进行；
@@ -137,7 +144,7 @@ void EventLoop::queueInLoop(const Functor &cb)
 {
     UniqueLockGuard lg(mutex_);
     pendingFunctors_.push_back(cb);
-    
+
     if (!isInLoopThread() || callPendingFunctors_)
     {
         wakeup();

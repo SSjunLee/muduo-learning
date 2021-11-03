@@ -19,6 +19,8 @@ public:
     EventLoop();
     ~EventLoop();
     void updateChannel(Channel *c);
+    void removeChannel(Channel*c);
+
     void quit();
     void loop();
     //检查当前执行代码的线程是否是EventLoop的主人
@@ -73,5 +75,6 @@ private:
     void abortNotInLoopThread()
     {
         LOG << "abort !" << ENDL;
+        abort();
     };
 };

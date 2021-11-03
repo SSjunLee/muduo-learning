@@ -85,7 +85,7 @@ void Epoller::update(int op, Channel *channel)
     memset(&event, 0, sizeof(struct epoll_event));
     event.data.ptr = channel;
     event.events = channel->events();
-    LOG << "epoll_ctl op =" << opToString(op) << "event = {" << channel->eventsToString(channel->fd(), channel->events())<<" }"<< ENDL;
+    LOG << "epoll_ctl op =" << opToString(op) << "event = {" << channel->eventsToString(channel->fd(), channel->events()) << " }" << ENDL;
     if (::epoll_ctl(epfd_, op, channel->fd(), &event) < 0)
     {
         LOG_SYSFATAL << " epoll ctl op = " << opToString(op) << " ";
@@ -125,4 +125,22 @@ void Epoller::updateChannel(Channel *channel)
         else
             update(EPOLL_CTL_MOD, channel);
     }
+}
+
+void Epoller::removeChannel(Channel *channel)
+{
+    assertInLoopThread();
+    int fd = channel->fd();
+    LOG<<"fd = "<<fd<<ENDL;
+    assert(channels_.find(fd)!=channels_.end());
+    assert(channel->isNoneEvent());
+    int idx = channel->index();
+    assert(idx == kadded || idx == kdeleted);
+    size_t n = channels_.erase(fd);
+    assert(n == 1);
+    if(idx == kadded)
+    {
+        update(EPOLL_CTL_DEL,channel);
+    }
+    channel->set_index(knew);
 }

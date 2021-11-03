@@ -17,6 +17,7 @@ void Acceptor::listen()
 {
     loop_->assertInLoopThread();
     acceptSocket_.listen();
+    listenning_ = true;
     acceptChannel_.enableReading();
 }
 

@@ -273,9 +273,57 @@ CMakeFiles/app.dir/SocketOps.cc.o.provides: CMakeFiles/app.dir/SocketOps.cc.o.re
 CMakeFiles/app.dir/SocketOps.cc.o.provides.build: CMakeFiles/app.dir/SocketOps.cc.o
 
 
+CMakeFiles/app.dir/TcpConnection.cc.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/TcpConnection.cc.o: ../TcpConnection.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/app.dir/TcpConnection.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/TcpConnection.cc.o -c /home/ljn/文档/jnserver/TcpConnection.cc
+
+CMakeFiles/app.dir/TcpConnection.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/TcpConnection.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ljn/文档/jnserver/TcpConnection.cc > CMakeFiles/app.dir/TcpConnection.cc.i
+
+CMakeFiles/app.dir/TcpConnection.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/TcpConnection.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ljn/文档/jnserver/TcpConnection.cc -o CMakeFiles/app.dir/TcpConnection.cc.s
+
+CMakeFiles/app.dir/TcpConnection.cc.o.requires:
+
+.PHONY : CMakeFiles/app.dir/TcpConnection.cc.o.requires
+
+CMakeFiles/app.dir/TcpConnection.cc.o.provides: CMakeFiles/app.dir/TcpConnection.cc.o.requires
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpConnection.cc.o.provides.build
+.PHONY : CMakeFiles/app.dir/TcpConnection.cc.o.provides
+
+CMakeFiles/app.dir/TcpConnection.cc.o.provides.build: CMakeFiles/app.dir/TcpConnection.cc.o
+
+
+CMakeFiles/app.dir/TcpServer.cc.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/TcpServer.cc.o: ../TcpServer.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/app.dir/TcpServer.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/TcpServer.cc.o -c /home/ljn/文档/jnserver/TcpServer.cc
+
+CMakeFiles/app.dir/TcpServer.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/TcpServer.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ljn/文档/jnserver/TcpServer.cc > CMakeFiles/app.dir/TcpServer.cc.i
+
+CMakeFiles/app.dir/TcpServer.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/TcpServer.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ljn/文档/jnserver/TcpServer.cc -o CMakeFiles/app.dir/TcpServer.cc.s
+
+CMakeFiles/app.dir/TcpServer.cc.o.requires:
+
+.PHONY : CMakeFiles/app.dir/TcpServer.cc.o.requires
+
+CMakeFiles/app.dir/TcpServer.cc.o.provides: CMakeFiles/app.dir/TcpServer.cc.o.requires
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/TcpServer.cc.o.provides.build
+.PHONY : CMakeFiles/app.dir/TcpServer.cc.o.provides
+
+CMakeFiles/app.dir/TcpServer.cc.o.provides.build: CMakeFiles/app.dir/TcpServer.cc.o
+
+
 CMakeFiles/app.dir/TimeQueue.cc.o: CMakeFiles/app.dir/flags.make
 CMakeFiles/app.dir/TimeQueue.cc.o: ../TimeQueue.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/app.dir/TimeQueue.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/app.dir/TimeQueue.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/TimeQueue.cc.o -c /home/ljn/文档/jnserver/TimeQueue.cc
 
 CMakeFiles/app.dir/TimeQueue.cc.i: cmake_force
@@ -299,7 +347,7 @@ CMakeFiles/app.dir/TimeQueue.cc.o.provides.build: CMakeFiles/app.dir/TimeQueue.c
 
 CMakeFiles/app.dir/Timer.cc.o: CMakeFiles/app.dir/flags.make
 CMakeFiles/app.dir/Timer.cc.o: ../Timer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/app.dir/Timer.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/app.dir/Timer.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/Timer.cc.o -c /home/ljn/文档/jnserver/Timer.cc
 
 CMakeFiles/app.dir/Timer.cc.i: cmake_force
@@ -323,7 +371,7 @@ CMakeFiles/app.dir/Timer.cc.o.provides.build: CMakeFiles/app.dir/Timer.cc.o
 
 CMakeFiles/app.dir/Timestamp.cc.o: CMakeFiles/app.dir/flags.make
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/app.dir/Timestamp.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/app.dir/Timestamp.cc.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/Timestamp.cc.o -c /home/ljn/文档/jnserver/Timestamp.cc
 
 CMakeFiles/app.dir/Timestamp.cc.i: cmake_force
@@ -345,28 +393,28 @@ CMakeFiles/app.dir/Timestamp.cc.o.provides: CMakeFiles/app.dir/Timestamp.cc.o.re
 CMakeFiles/app.dir/Timestamp.cc.o.provides.build: CMakeFiles/app.dir/Timestamp.cc.o
 
 
-CMakeFiles/app.dir/test6.cc.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/test6.cc.o: ../test6.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/app.dir/test6.cc.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/test6.cc.o -c /home/ljn/文档/jnserver/test6.cc
+CMakeFiles/app.dir/test8.cc.o: CMakeFiles/app.dir/flags.make
+CMakeFiles/app.dir/test8.cc.o: ../test8.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/app.dir/test8.cc.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.dir/test8.cc.o -c /home/ljn/文档/jnserver/test8.cc
 
-CMakeFiles/app.dir/test6.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/test6.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ljn/文档/jnserver/test6.cc > CMakeFiles/app.dir/test6.cc.i
+CMakeFiles/app.dir/test8.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.dir/test8.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ljn/文档/jnserver/test8.cc > CMakeFiles/app.dir/test8.cc.i
 
-CMakeFiles/app.dir/test6.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/test6.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ljn/文档/jnserver/test6.cc -o CMakeFiles/app.dir/test6.cc.s
+CMakeFiles/app.dir/test8.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.dir/test8.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ljn/文档/jnserver/test8.cc -o CMakeFiles/app.dir/test8.cc.s
 
-CMakeFiles/app.dir/test6.cc.o.requires:
+CMakeFiles/app.dir/test8.cc.o.requires:
 
-.PHONY : CMakeFiles/app.dir/test6.cc.o.requires
+.PHONY : CMakeFiles/app.dir/test8.cc.o.requires
 
-CMakeFiles/app.dir/test6.cc.o.provides: CMakeFiles/app.dir/test6.cc.o.requires
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test6.cc.o.provides.build
-.PHONY : CMakeFiles/app.dir/test6.cc.o.provides
+CMakeFiles/app.dir/test8.cc.o.provides: CMakeFiles/app.dir/test8.cc.o.requires
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.o.provides.build
+.PHONY : CMakeFiles/app.dir/test8.cc.o.provides
 
-CMakeFiles/app.dir/test6.cc.o.provides.build: CMakeFiles/app.dir/test6.cc.o
+CMakeFiles/app.dir/test8.cc.o.provides.build: CMakeFiles/app.dir/test8.cc.o
 
 
 # Object files for target app
@@ -380,10 +428,12 @@ app_OBJECTS = \
 "CMakeFiles/app.dir/Log.cc.o" \
 "CMakeFiles/app.dir/Socket.cc.o" \
 "CMakeFiles/app.dir/SocketOps.cc.o" \
+"CMakeFiles/app.dir/TcpConnection.cc.o" \
+"CMakeFiles/app.dir/TcpServer.cc.o" \
 "CMakeFiles/app.dir/TimeQueue.cc.o" \
 "CMakeFiles/app.dir/Timer.cc.o" \
 "CMakeFiles/app.dir/Timestamp.cc.o" \
-"CMakeFiles/app.dir/test6.cc.o"
+"CMakeFiles/app.dir/test8.cc.o"
 
 # External object files for target app
 app_EXTERNAL_OBJECTS =
@@ -397,13 +447,15 @@ app: CMakeFiles/app.dir/InetAddress.cc.o
 app: CMakeFiles/app.dir/Log.cc.o
 app: CMakeFiles/app.dir/Socket.cc.o
 app: CMakeFiles/app.dir/SocketOps.cc.o
+app: CMakeFiles/app.dir/TcpConnection.cc.o
+app: CMakeFiles/app.dir/TcpServer.cc.o
 app: CMakeFiles/app.dir/TimeQueue.cc.o
 app: CMakeFiles/app.dir/Timer.cc.o
 app: CMakeFiles/app.dir/Timestamp.cc.o
-app: CMakeFiles/app.dir/test6.cc.o
+app: CMakeFiles/app.dir/test8.cc.o
 app: CMakeFiles/app.dir/build.make
 app: CMakeFiles/app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ljn/文档/jnserver/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Linking CXX executable app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -420,10 +472,12 @@ CMakeFiles/app.dir/requires: CMakeFiles/app.dir/InetAddress.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/Log.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/Socket.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/SocketOps.cc.o.requires
+CMakeFiles/app.dir/requires: CMakeFiles/app.dir/TcpConnection.cc.o.requires
+CMakeFiles/app.dir/requires: CMakeFiles/app.dir/TcpServer.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/TimeQueue.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/Timer.cc.o.requires
 CMakeFiles/app.dir/requires: CMakeFiles/app.dir/Timestamp.cc.o.requires
-CMakeFiles/app.dir/requires: CMakeFiles/app.dir/test6.cc.o.requires
+CMakeFiles/app.dir/requires: CMakeFiles/app.dir/test8.cc.o.requires
 
 .PHONY : CMakeFiles/app.dir/requires
 

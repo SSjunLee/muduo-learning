@@ -13,10 +13,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ljn/文档/jnserver/Log.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Log.cc.o"
   "/home/ljn/文档/jnserver/Socket.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Socket.cc.o"
   "/home/ljn/文档/jnserver/SocketOps.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/SocketOps.cc.o"
+  "/home/ljn/文档/jnserver/TcpConnection.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TcpConnection.cc.o"
+  "/home/ljn/文档/jnserver/TcpServer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TcpServer.cc.o"
   "/home/ljn/文档/jnserver/TimeQueue.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TimeQueue.cc.o"
   "/home/ljn/文档/jnserver/Timer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timer.cc.o"
   "/home/ljn/文档/jnserver/Timestamp.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timestamp.cc.o"
-  "/home/ljn/文档/jnserver/test6.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test6.cc.o"
+  "/home/ljn/文档/jnserver/test8.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test8.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

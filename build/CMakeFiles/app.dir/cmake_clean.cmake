@@ -8,10 +8,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/app.dir/Log.cc.o"
   "CMakeFiles/app.dir/Socket.cc.o"
   "CMakeFiles/app.dir/SocketOps.cc.o"
+  "CMakeFiles/app.dir/TcpConnection.cc.o"
+  "CMakeFiles/app.dir/TcpServer.cc.o"
   "CMakeFiles/app.dir/TimeQueue.cc.o"
   "CMakeFiles/app.dir/Timer.cc.o"
   "CMakeFiles/app.dir/Timestamp.cc.o"
-  "CMakeFiles/app.dir/test6.cc.o"
+  "CMakeFiles/app.dir/test8.cc.o"
   "app.pdb"
   "app"
 )
