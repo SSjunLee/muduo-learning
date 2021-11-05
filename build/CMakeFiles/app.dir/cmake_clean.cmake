@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/app.dir/Acceptor.cc.o"
+  "CMakeFiles/app.dir/Buffer.cc.o"
   "CMakeFiles/app.dir/Channel.cc.o"
   "CMakeFiles/app.dir/Epoller.cc.o"
   "CMakeFiles/app.dir/EventLoop.cc.o"
@@ -13,7 +14,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/app.dir/TimeQueue.cc.o"
   "CMakeFiles/app.dir/Timer.cc.o"
   "CMakeFiles/app.dir/Timestamp.cc.o"
-  "CMakeFiles/app.dir/test8.cc.o"
+  "CMakeFiles/app.dir/test9.cc.o"
   "app.pdb"
   "app"
 )

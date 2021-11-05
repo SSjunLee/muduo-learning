@@ -15,6 +15,9 @@ CMakeFiles/app.dir/Acceptor.cc.o: ../Timestamp.h
 CMakeFiles/app.dir/Acceptor.cc.o: ../Type.h
 CMakeFiles/app.dir/Acceptor.cc.o: ../nocopyable.h
 
+CMakeFiles/app.dir/Buffer.cc.o: ../Buffer.cc
+CMakeFiles/app.dir/Buffer.cc.o: ../Buffer.h
+
 CMakeFiles/app.dir/Channel.cc.o: ../Channel.cc
 CMakeFiles/app.dir/Channel.cc.o: ../Channel.h
 CMakeFiles/app.dir/Channel.cc.o: ../EventLoop.h
@@ -69,6 +72,7 @@ CMakeFiles/app.dir/Socket.cc.o: ../InetAddress.h
 CMakeFiles/app.dir/Socket.cc.o: ../Socket.cc
 CMakeFiles/app.dir/Socket.cc.o: ../Socket.h
 CMakeFiles/app.dir/Socket.cc.o: ../SocketOps.h
+CMakeFiles/app.dir/Socket.cc.o: ../Timestamp.h
 CMakeFiles/app.dir/Socket.cc.o: ../Type.h
 CMakeFiles/app.dir/Socket.cc.o: ../nocopyable.h
 
@@ -76,6 +80,7 @@ CMakeFiles/app.dir/SocketOps.cc.o: ../Log.h
 CMakeFiles/app.dir/SocketOps.cc.o: ../SocketOps.cc
 CMakeFiles/app.dir/SocketOps.cc.o: ../SocketOps.h
 
+CMakeFiles/app.dir/TcpConnection.cc.o: ../Buffer.h
 CMakeFiles/app.dir/TcpConnection.cc.o: ../Channel.h
 CMakeFiles/app.dir/TcpConnection.cc.o: ../EventLoop.h
 CMakeFiles/app.dir/TcpConnection.cc.o: ../InetAddress.h
@@ -91,6 +96,7 @@ CMakeFiles/app.dir/TcpConnection.cc.o: ../Type.h
 CMakeFiles/app.dir/TcpConnection.cc.o: ../nocopyable.h
 
 CMakeFiles/app.dir/TcpServer.cc.o: ../Acceptor.h
+CMakeFiles/app.dir/TcpServer.cc.o: ../Buffer.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../Channel.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../EventLoop.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../InetAddress.h
@@ -126,16 +132,17 @@ CMakeFiles/app.dir/Timer.cc.o: ../nocopyable.h
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.cc
 CMakeFiles/app.dir/Timestamp.cc.o: ../Timestamp.h
 
-CMakeFiles/app.dir/test8.cc.o: ../Channel.h
-CMakeFiles/app.dir/test8.cc.o: ../EventLoop.h
-CMakeFiles/app.dir/test8.cc.o: ../InetAddress.h
-CMakeFiles/app.dir/test8.cc.o: ../Log.h
-CMakeFiles/app.dir/test8.cc.o: ../TcpConnection.h
-CMakeFiles/app.dir/test8.cc.o: ../TcpServer.h
-CMakeFiles/app.dir/test8.cc.o: ../TimeQueue.h
-CMakeFiles/app.dir/test8.cc.o: ../TimerId.h
-CMakeFiles/app.dir/test8.cc.o: ../Timestamp.h
-CMakeFiles/app.dir/test8.cc.o: ../Type.h
-CMakeFiles/app.dir/test8.cc.o: ../nocopyable.h
-CMakeFiles/app.dir/test8.cc.o: ../test8.cc
+CMakeFiles/app.dir/test9.cc.o: ../Buffer.h
+CMakeFiles/app.dir/test9.cc.o: ../Channel.h
+CMakeFiles/app.dir/test9.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/test9.cc.o: ../InetAddress.h
+CMakeFiles/app.dir/test9.cc.o: ../Log.h
+CMakeFiles/app.dir/test9.cc.o: ../TcpConnection.h
+CMakeFiles/app.dir/test9.cc.o: ../TcpServer.h
+CMakeFiles/app.dir/test9.cc.o: ../TimeQueue.h
+CMakeFiles/app.dir/test9.cc.o: ../TimerId.h
+CMakeFiles/app.dir/test9.cc.o: ../Timestamp.h
+CMakeFiles/app.dir/test9.cc.o: ../Type.h
+CMakeFiles/app.dir/test9.cc.o: ../nocopyable.h
+CMakeFiles/app.dir/test9.cc.o: ../test9.cc
 

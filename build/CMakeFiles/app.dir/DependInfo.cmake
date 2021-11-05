@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ljn/文档/jnserver/Acceptor.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Acceptor.cc.o"
+  "/home/ljn/文档/jnserver/Buffer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Buffer.cc.o"
   "/home/ljn/文档/jnserver/Channel.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Channel.cc.o"
   "/home/ljn/文档/jnserver/Epoller.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Epoller.cc.o"
   "/home/ljn/文档/jnserver/EventLoop.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/EventLoop.cc.o"
@@ -18,7 +19,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ljn/文档/jnserver/TimeQueue.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TimeQueue.cc.o"
   "/home/ljn/文档/jnserver/Timer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timer.cc.o"
   "/home/ljn/文档/jnserver/Timestamp.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timestamp.cc.o"
-  "/home/ljn/文档/jnserver/test8.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test8.cc.o"
+  "/home/ljn/文档/jnserver/test9.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test9.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

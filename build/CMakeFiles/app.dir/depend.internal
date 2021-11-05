@@ -15,6 +15,9 @@ CMakeFiles/app.dir/Acceptor.cc.o
  /home/ljn/文档/jnserver/Timestamp.h
  /home/ljn/文档/jnserver/Type.h
  /home/ljn/文档/jnserver/nocopyable.h
+CMakeFiles/app.dir/Buffer.cc.o
+ /home/ljn/文档/jnserver/Buffer.cc
+ /home/ljn/文档/jnserver/Buffer.h
 CMakeFiles/app.dir/Channel.cc.o
  /home/ljn/文档/jnserver/Channel.cc
  /home/ljn/文档/jnserver/Channel.h
@@ -70,6 +73,7 @@ CMakeFiles/app.dir/Socket.cc.o
  /home/ljn/文档/jnserver/Socket.cc
  /home/ljn/文档/jnserver/Socket.h
  /home/ljn/文档/jnserver/SocketOps.h
+ /home/ljn/文档/jnserver/Timestamp.h
  /home/ljn/文档/jnserver/Type.h
  /home/ljn/文档/jnserver/nocopyable.h
 CMakeFiles/app.dir/SocketOps.cc.o
@@ -77,6 +81,7 @@ CMakeFiles/app.dir/SocketOps.cc.o
  /home/ljn/文档/jnserver/SocketOps.cc
  /home/ljn/文档/jnserver/SocketOps.h
 CMakeFiles/app.dir/TcpConnection.cc.o
+ /home/ljn/文档/jnserver/Buffer.h
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
  /home/ljn/文档/jnserver/InetAddress.h
@@ -92,6 +97,7 @@ CMakeFiles/app.dir/TcpConnection.cc.o
  /home/ljn/文档/jnserver/nocopyable.h
 CMakeFiles/app.dir/TcpServer.cc.o
  /home/ljn/文档/jnserver/Acceptor.h
+ /home/ljn/文档/jnserver/Buffer.h
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
  /home/ljn/文档/jnserver/InetAddress.h
@@ -126,7 +132,8 @@ CMakeFiles/app.dir/Timer.cc.o
 CMakeFiles/app.dir/Timestamp.cc.o
  /home/ljn/文档/jnserver/Timestamp.cc
  /home/ljn/文档/jnserver/Timestamp.h
-CMakeFiles/app.dir/test8.cc.o
+CMakeFiles/app.dir/test9.cc.o
+ /home/ljn/文档/jnserver/Buffer.h
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
  /home/ljn/文档/jnserver/InetAddress.h
@@ -138,4 +145,4 @@ CMakeFiles/app.dir/test8.cc.o
  /home/ljn/文档/jnserver/Timestamp.h
  /home/ljn/文档/jnserver/Type.h
  /home/ljn/文档/jnserver/nocopyable.h
- /home/ljn/文档/jnserver/test8.cc
+ /home/ljn/文档/jnserver/test9.cc

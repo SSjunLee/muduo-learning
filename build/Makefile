@@ -150,6 +150,33 @@ Acceptor.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Acceptor.cc.s
 .PHONY : Acceptor.cc.s
 
+Buffer.o: Buffer.cc.o
+
+.PHONY : Buffer.o
+
+# target to build an object file
+Buffer.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Buffer.cc.o
+.PHONY : Buffer.cc.o
+
+Buffer.i: Buffer.cc.i
+
+.PHONY : Buffer.i
+
+# target to preprocess a source file
+Buffer.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Buffer.cc.i
+.PHONY : Buffer.cc.i
+
+Buffer.s: Buffer.cc.s
+
+.PHONY : Buffer.s
+
+# target to generate assembly for a file
+Buffer.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Buffer.cc.s
+.PHONY : Buffer.cc.s
+
 Channel.o: Channel.cc.o
 
 .PHONY : Channel.o
@@ -501,32 +528,32 @@ Timestamp.cc.s:
 	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/Timestamp.cc.s
 .PHONY : Timestamp.cc.s
 
-test8.o: test8.cc.o
+test9.o: test9.cc.o
 
-.PHONY : test8.o
+.PHONY : test9.o
 
 # target to build an object file
-test8.cc.o:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.o
-.PHONY : test8.cc.o
+test9.cc.o:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test9.cc.o
+.PHONY : test9.cc.o
 
-test8.i: test8.cc.i
+test9.i: test9.cc.i
 
-.PHONY : test8.i
+.PHONY : test9.i
 
 # target to preprocess a source file
-test8.cc.i:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.i
-.PHONY : test8.cc.i
+test9.cc.i:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test9.cc.i
+.PHONY : test9.cc.i
 
-test8.s: test8.cc.s
+test9.s: test9.cc.s
 
-.PHONY : test8.s
+.PHONY : test9.s
 
 # target to generate assembly for a file
-test8.cc.s:
-	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test8.cc.s
-.PHONY : test8.cc.s
+test9.cc.s:
+	$(MAKE) -f CMakeFiles/app.dir/build.make CMakeFiles/app.dir/test9.cc.s
+.PHONY : test9.cc.s
 
 # Help Target
 help:
@@ -540,6 +567,9 @@ help:
 	@echo "... Acceptor.o"
 	@echo "... Acceptor.i"
 	@echo "... Acceptor.s"
+	@echo "... Buffer.o"
+	@echo "... Buffer.i"
+	@echo "... Buffer.s"
 	@echo "... Channel.o"
 	@echo "... Channel.i"
 	@echo "... Channel.s"
@@ -579,9 +609,9 @@ help:
 	@echo "... Timestamp.o"
 	@echo "... Timestamp.i"
 	@echo "... Timestamp.s"
-	@echo "... test8.o"
-	@echo "... test8.i"
-	@echo "... test8.s"
+	@echo "... test9.o"
+	@echo "... test9.i"
+	@echo "... test9.s"
 .PHONY : help
 
 

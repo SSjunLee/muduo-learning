@@ -13,27 +13,30 @@ TcpConnection::TcpConnection(EventLoop *loop, const std::string &name, int sockf
       socket_(new Socket(sockfd)),
       channel_(new Channel(loop_, sockfd)),
       localAddr_(localAddr_),
-      peerAddr_(peerAddr_)
+      peerAddr_(peerAddr_),
+      inputbuffer_()
 {
   LOG_DEBUG << "TcpConnetion create [" << name_ << "] at fd = " << sockfd << ENDL;
-  channel_->setReadCallback_(std::bind(&TcpConnection::handleRead, this));
+  channel_->setReadCallback_(std::bind(&TcpConnection::handleRead, this,std::placeholders::_1));
   //channel_->enableReading();
 }
 
 
 //如果对端关闭，则必须关闭连接，否则会一直read 0byte,poller会不停地触发读事件，导致忙轮询
-void TcpConnection::handleRead()
+void TcpConnection::handleRead(Timestamp recieveTime)
 {
-  char buf[65535] = {0};
-  ssize_t n = ::read(socket_->fd(), buf, sizeof(buf));
+  int saveError = 0;
+  ssize_t n= inputbuffer_.readFd(channel_->fd(),&saveError);
   if (n > 0)
-    messageCallback_(shared_from_this(), buf, n);
+    messageCallback_(shared_from_this(), &inputbuffer_, recieveTime);
   else if (n == 0)
   {
     handleClose();
   }
   else
   {
+    errno = saveError;
+    LOG_ERROR<<"TcpConnection::handleRead";
     handleError();
   }
 }

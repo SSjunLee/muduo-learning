@@ -1,6 +1,7 @@
 #pragma once
 #include "Type.h"
 #include "InetAddress.h"
+#include "Buffer.h"
 class EventLoop;
 class Socket;
 class Channel;
@@ -23,7 +24,7 @@ public:
     const std::string &name() const { return name_; }
 
 private:
-    void handleRead();
+    void handleRead(Timestamp recieveTime);
     void handleWrite();
     void handleClose();
     void handleError();
@@ -42,6 +43,7 @@ private:
     std::unique_ptr<Channel> channel_;
     InetAddress localAddr_;
     InetAddress peerAddr_;
+    Buffer inputbuffer_;
 
     ConnectionCallback connectionCallback_;
     MessageCallback messageCallback_;

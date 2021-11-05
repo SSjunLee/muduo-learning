@@ -22,6 +22,24 @@ Socket.h
 Channel.h
 /home/ljn/文档/jnserver/Channel.h
 
+/home/ljn/文档/jnserver/Buffer.cc
+Buffer.h
+/home/ljn/文档/jnserver/Buffer.h
+sys/uio.h
+-
+errno.h
+-
+
+/home/ljn/文档/jnserver/Buffer.h
+vector
+-
+unistd.h
+-
+iostream
+-
+assert.h
+-
+
 /home/ljn/文档/jnserver/Channel.cc
 poll.h
 -
@@ -39,6 +57,8 @@ functional
 -
 nocopyable.h
 /home/ljn/文档/jnserver/nocopyable.h
+Timestamp.h
+/home/ljn/文档/jnserver/Timestamp.h
 
 /home/ljn/文档/jnserver/Epoller.cc
 sys/epoll.h
@@ -193,6 +213,8 @@ Type.h
 /home/ljn/文档/jnserver/Type.h
 InetAddress.h
 /home/ljn/文档/jnserver/InetAddress.h
+Buffer.h
+/home/ljn/文档/jnserver/Buffer.h
 
 /home/ljn/文档/jnserver/TcpServer.cc
 TcpServer.h
@@ -289,12 +311,14 @@ mutex
 -
 memory
 -
+Timestamp.h
+/home/ljn/文档/jnserver/Timestamp.h
 nocopyable.h
 /home/ljn/文档/jnserver/nocopyable.h
 
 /home/ljn/文档/jnserver/nocopyable.h
 
-/home/ljn/文档/jnserver/test8.cc
+/home/ljn/文档/jnserver/test9.cc
 TcpServer.h
 /home/ljn/文档/jnserver/TcpServer.h
 EventLoop.h
