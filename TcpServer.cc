@@ -32,6 +32,7 @@ void TcpServer::newConnection(int sockfd, const InetAddress &peerAddr)
     connections_[connName] = connectionPtr;
     connectionPtr->setConnectionCallback(connectionCallback_);
     connectionPtr->setMessageCallback(meassageCallback);
+    connectionPtr->setWriteCompleteCallback(writeCompleteCallback_);
     connectionPtr->setCloseCallback(std::bind(&TcpServer::removeConnection,this,std::placeholders::_1));
     connectionPtr->connectionEstablished();
     

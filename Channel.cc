@@ -1,11 +1,12 @@
 #include <poll.h>
 #include <sstream>
+#include<sys/epoll.h>
 #include <assert.h>
 #include "Channel.h"
 #include "EventLoop.h"
 const int Channel::kNoneEvent = 0;
-const int Channel::kReadEvent = POLLIN | POLLPRI;
-const int Channel::kWriteEvent = POLLOUT;
+const int Channel::kReadEvent = EPOLLIN | EPOLLPRI;
+const int Channel::kWriteEvent = EPOLLOUT;
 
 void Channel::update()
 {
@@ -15,30 +16,34 @@ void Channel::update()
 void Channel::handleEvent(Timestamp recieveTime)
 {
     eventHandling_ = true;
-    if(revents_&POLLNVAL){
-        LOG_WARN<<"Channel::handleEvent() POLLNAV"<<ENDL;
-    }
-    if((revents_& POLLHUP) && !(revents_ & POLLIN))
+    if (revents_ & POLLNVAL)
     {
-        LOG_WARN<<"Channel::handleEvent() POLLHUP"<<ENDL;
-        if(closeCallback_)closeCallback_();
+        LOG_WARN << "Channel::handleEvent() POLLNAV" << ENDL;
+    }
+    if ((revents_ & POLLHUP) && !(revents_ & POLLIN))
+    {
+        LOG_WARN << "Channel::handleEvent() POLLHUP" << ENDL;
+        if (closeCallback_)
+            closeCallback_();
     }
 
-    if(revents_&(POLLERR|POLLNVAL))
+    if (revents_ & (POLLERR | POLLNVAL))
     {
-        if(errorCallback_)errorCallback_();
+        if (errorCallback_)
+            errorCallback_();
     }
-    if(revents_&(POLLIN|POLLPRI|POLLRDHUP))
+    if (revents_ & (POLLIN | POLLPRI | POLLRDHUP))
     {
-        if(readCallback_)readCallback_(recieveTime);
+        if (readCallback_)
+            readCallback_(recieveTime);
     }
-    if(revents_&(POLLOUT))
+    if (revents_ & (POLLOUT))
     {
-        if(writeCallback_)writeCallback_();
+        if (writeCallback_)
+            writeCallback_();
     }
     eventHandling_ = false;
 }
-
 
 Channel::Channel(EventLoop *loop, int fd)
     : loop_(loop),
@@ -46,35 +51,33 @@ Channel::Channel(EventLoop *loop, int fd)
       events_(0),
       revents_(0),
       index_(-1),
-      eventHandling_(false)
-{
-};
+      eventHandling_(false){};
 
-Channel::~Channel(){
+Channel::~Channel()
+{
     assert(eventHandling_ == false);
 }
 
 std::string Channel::eventsToString(int fd, int ev)
 {
     std::ostringstream oss;
-    oss <<"fd: "<<fd << ", events:  [";
+    oss << "fd: " << fd << ", events:  [";
     if (ev & POLLIN)
-        oss << "IN ";
+        oss << "POLLIN ";
     if (ev & POLLPRI)
-        oss << "PRI ";
+        oss << "POLLPRI ";
     if (ev & POLLOUT)
-        oss << "OUT ";
+        oss << "POLLOUT ";
     if (ev & POLLHUP)
-        oss << "HUP ";
+        oss << "POLLHUP ";
     if (ev & POLLRDHUP)
-        oss << "RDHUP ";
+        oss << "POLLRDHUP ";
     if (ev & POLLERR)
-        oss << "ERR ";
+        oss << "POLLERR ";
     if (ev & POLLNVAL)
-        oss << "NVAL ";
+        oss << "POLLNVAL ";
 
-    oss<<" ]";    
+    oss << " ]";
 
     return oss.str();
 }
-

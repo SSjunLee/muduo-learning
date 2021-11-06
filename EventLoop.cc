@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <sys/eventfd.h>
+#include<signal.h>
 #include "EventLoop.h"
 #include "Epoller.h"
 
@@ -15,6 +16,16 @@ int createEventFd()
     }
     return fd;
 }
+
+class IgnoreSigPipe
+{
+public:
+    IgnoreSigPipe(){
+        ::signal(SIGPIPE,SIG_IGN);
+    }
+};
+IgnoreSigPipe initSigPie;
+
 
 EventLoop::EventLoop()
     : looping_(false),

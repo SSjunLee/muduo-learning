@@ -19,6 +19,10 @@ TcpConnection::TcpConnection(EventLoop *loop, const std::string &name, int sockf
 {
   LOG_DEBUG << "TcpConnetion create [" << name_ << "] at fd = " << sockfd << ENDL;
   channel_->setReadCallback_(std::bind(&TcpConnection::handleRead, this, std::placeholders::_1));
+  channel_->setWriteCallback(std::bind(&TcpConnection::handleWrite, this));
+  channel_->setErrorCallback(std::bind(&TcpConnection::handleError, this));
+  channel_->setCloseCallback(std::bind(&TcpConnection::handleClose, this));
+
   //channel_->enableReading();
 }
 
@@ -40,31 +44,40 @@ void TcpConnection::handleRead(Timestamp recieveTime)
     handleError();
   }
 }
-void TcpConnection::handleWrite() {
+void TcpConnection::handleWrite()
+{
   loop_->assertInLoopThread();
-  //将缓冲区里的数据写出
-  if(channel_->isWriting())
+  //将输出缓冲区里的数据写出
+  if (channel_->isWriting())
   {
-    ssize_t n = ::write(channel_->fd(),outputBuffer_.peek(),outputBuffer_.writeableBytes());
-    if(n > 0)
+    ssize_t n = ::write(channel_->fd(), outputBuffer_.peek(), outputBuffer_.readableBytes());
+    if (n > 0)
     {
-       outputBuffer_.retrieve(n);
-       if(outputBuffer_.readableBytes() == 0){
-         channel_->disableWriting();
-         if(state_ == kDisConnecting)
-         {
-           shutdownInLoop();
-         }else{
-           LOG<<"write more data"<<ENDL;
-         }
-       }
-    }else {
-      LOG_ERROR<<"TcpConnection::handleWrite()";
+      outputBuffer_.retrieve(n);
+      if (outputBuffer_.readableBytes() == 0)
+      {
+        channel_->disableWriting();
+        if(writeCompleteCallback_)
+          loop_->queueInLoop(std::bind(writeCompleteCallback_,shared_from_this()));
+        if (state_ == kDisConnecting)
+        {
+          shutdownInLoop();
+        }
+        else
+        {
+          LOG << "write more data" << ENDL;
+        }
+      }
     }
-  }else{
-    LOG<<"connect is down,no more writing"<<ENDL;
+    else
+    {
+      LOG_ERROR << "TcpConnection::handleWrite()";
+    }
   }
-
+  else
+  {
+    LOG << "connect is down,no more writing" << ENDL;
+  }
 }
 void TcpConnection::handleClose()
 {
@@ -105,64 +118,72 @@ void TcpConnection::connectionDestroyed()
   loop_->removeChannel(channel_.get());
 }
 
-void TcpConnection::send(const void*msg,size_t len){
-
-}
-void TcpConnection::send(const std::string&msg)
+void TcpConnection::send(const void *msg, size_t len)
 {
-  if(state_ == kConnected)
+}
+void TcpConnection::send(const std::string &msg)
+{ 
+  //channel_->enableWriting();
+  //return;
+  if (state_ == kConnected)
   {
-    if(loop_->isInLoopThread())
+    if (loop_->isInLoopThread())
     {
-       sendInLoop(msg);
-    }else 
+      sendInLoop(msg);
+    }
+    else
     {
-      loop_->runInLoop(std::bind(&TcpConnection::sendInLoop,shared_from_this(),msg));
+      loop_->runInLoop(std::bind(&TcpConnection::sendInLoop, shared_from_this(), msg));
     }
   }
 }
 
-void TcpConnection::sendInLoop(const std::string&msg){
+void TcpConnection::sendInLoop(const std::string &msg)
+{
   loop_->assertInLoopThread();
   ssize_t nwrote = 0;
   //先尝试直接把msg的数据发送
-  if(!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
+  if (!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
   {
-      nwrote = ::write(channel_->fd(),msg.data(),msg.size());
-      if(nwrote >=0)
-      {
-        if(static_cast<size_t>(nwrote) < msg.size())
-          LOG<<"I m going to write more data"<<ENDL;
-      }else{
-        nwrote = 0;
-        if(errno == EWOULDBLOCK)
-          LOG_ERROR<<"TcpConnection::sendInLoop"<<ENDL;
-      }
+    nwrote = ::write(channel_->fd(), msg.data(), msg.size());
+    if (nwrote >= 0)
+    {
+      if (static_cast<size_t>(nwrote) < msg.size())
+        LOG << "I m going to write more data" << ENDL;
+    }
+    else
+    {
+      nwrote = 0;
+      if (errno == EWOULDBLOCK)
+        LOG_ERROR << "TcpConnection::sendInLoop" << ENDL;
+    }
   }
-  assert(nwrote>=0);
+  assert(nwrote >= 0);
   //如果没写完，则把没写完的append到缓冲区里，让outbuffer写
-  if(static_cast<size_t>(nwrote) < msg.size())
+  if (static_cast<size_t>(nwrote) < msg.size())
   {
-    outputBuffer_.append(msg.data() + nwrote,msg.size()-nwrote);
-    if(!channel_->isWriting()){
+    outputBuffer_.append(msg.data() + nwrote, msg.size() - nwrote);
+    if (!channel_->isWriting())
+    {
       channel_->enableWriting();
     }
   }
-
 }
 
 void TcpConnection::shutdown()
 {
-  if(state_ == kConnected)
+  if (state_ == kConnected)
   {
     state_ = kDisConnecting;
-    loop_->runInLoop(std::bind(&TcpConnection::shutdownInLoop,shared_from_this()));
+    loop_->runInLoop(std::bind(&TcpConnection::shutdownInLoop, shared_from_this()));
   }
 }
 
-void TcpConnection::shutdownInLoop(){
+void TcpConnection::shutdownInLoop()
+{
   loop_->assertInLoopThread();
-  if(!channel_->isWriting()){
+  if (!channel_->isWriting())
+  {
     socket_->shutdownWrite();
   }
 }

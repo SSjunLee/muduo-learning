@@ -15,7 +15,7 @@ public:
     void setConnectionCallback(const ConnectionCallback &cb) { connectionCallback_ = cb; }
     void setMessageCallback(const MessageCallback &cb) { messageCallback_ = cb; }
     void setCloseCallback(const CloseCallback &cb) { closeCallback_ = cb; }
-
+    void setWriteCompleteCallback(const WriteCompleteCallback&cb){writeCompleteCallback_ = cb;}
     void connectionEstablished();
     void connectionDestroyed();
     bool connected() const { return state_ == kConnected; }
@@ -53,4 +53,5 @@ private:
     ConnectionCallback connectionCallback_;
     MessageCallback messageCallback_;
     CloseCallback closeCallback_;
+    WriteCompleteCallback writeCompleteCallback_;
 };

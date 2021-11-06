@@ -1,149 +1,119 @@
-#include <sys/epoll.h>
-#include <cstring>
-#include <assert.h>
-#include "Epoller.h"
-#include "EventLoop.h"
-#include "Channel.h"
+// excerpts from http://code.google.com/p/muduo/
+//
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+//
+// Author: Shuo Chen (chenshuo at chenshuo dot com)
 
-Epoller::Epoller(EventLoop *loop)
-    : ownerLoop_(loop),
-      epfd_(epoll_create1(EPOLL_CLOEXEC)),
-      events_(defaultEventsSize),
-      channels_()
+#include "Epoller.h"
+#include "Channel.h"
+#include "Log.h"
+
+#include <assert.h>
+#include <poll.h>
+
+
+
+Epoller::Epoller(EventLoop* loop)
+  : ownerLoop_(loop)
 {
-    if (epfd_ < 0)
-    {
-        LOG_SYSFATAL << "epfd 错误 " << ENDL;
-        abort();
-    }
 }
 
 Epoller::~Epoller()
 {
 }
 
-Timestamp Epoller::poll(ChannelList *activeChannels, int timeOutMs)
+Timestamp Epoller::poll(ChannelList* activeChannels,int timeoutMs)
 {
-    int numEvents = epoll_wait(epfd_, &*events_.begin(), static_cast<int>(events_.size()),
-                               timeOutMs);
-    int save_errorno = errno;
-    Timestamp time = Timestamp::now();
-    if (numEvents > 0)
-    {
-        //LOG << numEvents << " events happened..." << ENDL;
-        fillActiveChannels(numEvents, activeChannels);
-        if (static_cast<size_t>(numEvents) == events_.size())
-            events_.resize(2 * events_.size());
-    }
-    else if (numEvents < 0)
-    {
-        if (save_errorno != EINTR)
-        {
-            errno = save_errorno;
-            LOG << "Epoller::poller" << ENDL;
-        }
-    }
-    return time;
+  // XXX pollfds_ shouldn't change
+  int numEvents = ::poll(&*pollfds_.begin(), pollfds_.size(), timeoutMs);
+  Timestamp now(Timestamp::now());
+  if (numEvents > 0) {
+    LOG << numEvents << " events happended";
+    fillActiveChannels(numEvents, activeChannels);
+  } else if (numEvents == 0) {
+    LOG << " nothing happended";
+  } else {
+    LOG_ERROR << "Poller::poll()";
+  }
+  return now;
 }
 
-void Epoller::fillActiveChannels(int numEvents, ChannelList *activeChannels) const
+void Epoller::fillActiveChannels(int numEvents,
+                                ChannelList* activeChannels) const
 {
-    assert(static_cast<size_t>(numEvents) <= events_.size());
-    for (int i = 0; i < numEvents; i++)
+  for (PollFdList::const_iterator pfd = pollfds_.begin();
+      pfd != pollfds_.end() && numEvents > 0; ++pfd)
+  {
+    if (pfd->revents > 0)
     {
-        Channel *channel = static_cast<Channel *>(events_[i].data.ptr);
-#ifndef NODEBUG
-        int fd = channel->fd();
-        auto it = channels_.find(fd);
-        assert(it != channels_.end());
-        assert(it->second == channel);
-#endif
-
-        channel->set_revents(events_[i].events);
-        activeChannels->push_back(channel);
+      --numEvents;
+      ChannelMap::const_iterator ch = channels_.find(pfd->fd);
+      assert(ch != channels_.end());
+      Channel* channel = ch->second;
+      assert(channel->fd() == pfd->fd);
+      channel->set_revents(pfd->revents);
+      // pfd->revents = 0;
+      activeChannels->push_back(channel);
     }
+  }
 }
 
-const char *Epoller::opToString(int op)
+void Epoller::updateChannel(Channel* channel)
 {
-    switch (op)
-    {
-    case EPOLL_CTL_ADD:
-        return "ADD";
-    case EPOLL_CTL_MOD:
-        return "MOD";
-    case EPOLL_CTL_DEL:
-        return "DEL";
-    default:
-        return "UNKOWN";
-    }
-}
-
-void Epoller::update(int op, Channel *channel)
-{
-    struct epoll_event event;
-    memset(&event, 0, sizeof(struct epoll_event));
-    event.data.ptr = channel;
-    event.events = channel->events();
-    LOG << "epoll_ctl op =" << opToString(op) << "event = {" << channel->eventsToString(channel->fd(), channel->events()) << " }" << ENDL;
-    if (::epoll_ctl(epfd_, op, channel->fd(), &event) < 0)
-    {   
-        if(op != EPOLL_CTL_DEL)
-        LOG_SYSFATAL << " epoll ctl op = " << opToString(op) << " "<<ENDL;
-    }
-}
-
-void Epoller::updateChannel(Channel *channel)
-{
-    assertInLoopThread();
-    const int type = channel->index();
-    LOG_DEBUG<<"fd = "<<channel->fd()<<" events = "<<channel->events()<<" type =  "<<
-    type<<ENDL;
-    if (type == knew || type == kdeleted)
-    {
-        int fd = channel->fd();
-        if (type == knew)
-        {
-            assert(channels_.find(fd) == channels_.end());
-            channels_[fd] = channel;
-        }
-        else
-        {
-            assert(channels_.find(fd) != channels_.end());
-            assert(channels_[fd] == channel);
-        }
-        channel->set_index(kadded);
-        update(EPOLL_CTL_ADD, channel);
-    }
-    else
-    {
-        int fd = channel->fd();
-        assert(channels_.find(fd) != channels_.end());
-        assert(channels_[fd] == channel);
-        if (channel->isNoneEvent())
-        {
-            update(EPOLL_CTL_DEL, channel);
-            channel->set_index(kdeleted);
-        }
-        else
-            update(EPOLL_CTL_MOD, channel);
-    }
-}
-
-void Epoller::removeChannel(Channel *channel)
-{
-    assertInLoopThread();
-    int fd = channel->fd();
-    LOG<<"fd = "<<fd<<ENDL;
-    assert(channels_.find(fd)!=channels_.end());
-    assert(channel->isNoneEvent());
+  assertInLoopThread();
+  LOG << "fd = " << channel->fd() << " events = " << channel->events();
+  if (channel->index() < 0) {
+    // a new one, add to pollfds_
+    assert(channels_.find(channel->fd()) == channels_.end());
+    struct pollfd pfd;
+    pfd.fd = channel->fd();
+    pfd.events = static_cast<short>(channel->events());
+    pfd.revents = 0;
+    pollfds_.push_back(pfd);
+    int idx = static_cast<int>(pollfds_.size())-1;
+    channel->set_index(idx);
+    channels_[pfd.fd] = channel;
+  } else {
+    // update existing one
+    assert(channels_.find(channel->fd()) != channels_.end());
+    assert(channels_[channel->fd()] == channel);
     int idx = channel->index();
-    assert(idx == kadded || idx == kdeleted);
-    size_t n = channels_.erase(fd);
-    assert(n == 1);
-    if(idx == kadded)
-    {
-        update(EPOLL_CTL_DEL,channel);
+    assert(0 <= idx && idx < static_cast<int>(pollfds_.size()));
+    struct pollfd& pfd = pollfds_[idx];
+    assert(pfd.fd == channel->fd() || pfd.fd == -channel->fd()-1);
+    pfd.events = static_cast<short>(channel->events());
+    pfd.revents = 0;
+    if (channel->isNoneEvent()) {
+      // ignore this pollfd
+      pfd.fd = -channel->fd()-1;
     }
-    channel->set_index(knew);
+  }
 }
+
+void Epoller::removeChannel(Channel* channel)
+{
+  assertInLoopThread();
+  LOG << "fd = " << channel->fd();
+  assert(channels_.find(channel->fd()) != channels_.end());
+  assert(channels_[channel->fd()] == channel);
+  assert(channel->isNoneEvent());
+  int idx = channel->index();
+  assert(0 <= idx && idx < static_cast<int>(pollfds_.size()));
+  const struct pollfd& pfd = pollfds_[idx]; (void)pfd;
+  assert(pfd.fd == -channel->fd()-1 && pfd.events == channel->events());
+  size_t n = channels_.erase(channel->fd());
+  assert(n == 1); (void)n;
+  if (static_cast<size_t>(idx) == pollfds_.size()-1) {
+    pollfds_.pop_back();
+  } else {
+    int channelAtEnd = pollfds_.back().fd;
+    iter_swap(pollfds_.begin()+idx, pollfds_.end()-1);
+    if (channelAtEnd < 0) {
+      channelAtEnd = -channelAtEnd-1;
+    }
+    channels_[channelAtEnd]->set_index(idx);
+    pollfds_.pop_back();
+  }
+}
+

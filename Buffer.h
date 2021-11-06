@@ -22,7 +22,7 @@ public:
 
     void makeSpace(size_t len)
     { // writeableBytes() + prependableBytes() 就是buffer_可以利用的空间
-        if (writeableBytes() + prependableBytes() >= len + kCheapPrepend)
+        if (writeableBytes() + prependableBytes() < len + kCheapPrepend)
         {
             buffer_.resize(writeIndex_ + len);
         }

@@ -13,7 +13,7 @@ void onConnection(const TcpConnectionPtr& conn)
   {
     printf("onConnection(): new connection [%s] from %s\n",
            conn->name().c_str(),
-           conn->peerAddress().toHostPort().c_str());
+           conn->peerAddress().toHostPort().c_str());       
     conn->send(message1);
     conn->send(message2);
     conn->shutdown();

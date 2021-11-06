@@ -1,42 +1,59 @@
+// excerpts from http://code.google.com/p/muduo/
+//
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
+//
+// Author: Shuo Chen (chenshuo at chenshuo dot com)
+
+
 #pragma once
-#include<vector>
-#include<map>
-#include"Timestamp.h"
-#include"EventLoop.h"
+#include <map>
+#include <vector>
+#include "nocopyable.h"
+#include "Timestamp.h"
+#include "EventLoop.h"
+class EventLoop;
+struct pollfd;
+
+
 class Channel;
-class Epoller
+
+///
+/// IO Multiplexing with poll(2).
+///
+/// This class doesn't own the Channel objects.
+class Epoller : nocopyable
 {
+ public:
+  typedef std::vector<Channel*> ChannelList;
 
-private:
-    static const int defaultEventsSize = 16;
-    static const int knew = -1;
-    static const int kadded = 1;
-    static const int kdeleted = 1;
+  Epoller(EventLoop* loop);
+  ~Epoller();
 
-public:
-    typedef std::vector<struct epoll_event> EventList;
-    typedef std::vector<Channel*> ChannelList;
-    typedef std::map<int,Channel*> ChannelMap;
-private:
+  /// Polls the I/O events.
+  /// Must be called in the loop thread.
+  Timestamp poll(ChannelList* activeChannels,int timeoutMs);
 
-    EventLoop* ownerLoop_;
-    int epfd_;
-    EventList events_;
-    //fd 到 Channel 的映射
-    ChannelMap channels_;
+  /// Changes the interested I/O events.
+  /// Must be called in the loop thread.
+  void updateChannel(Channel* channel);
+  /// Remove the channel, when it destructs.
+  /// Must be called in the loop thread.
+  void removeChannel(Channel* channel);
 
-public:
+  void assertInLoopThread() { ownerLoop_->assertInLoopThread(); }
 
-    Timestamp poll(ChannelList*activeChannels,int timeOutMs);
-    Epoller(EventLoop* loop);
-    ~Epoller();
-    //修改io事件，必须被loop线程调用
-    void updateChannel(Channel*channel);
-    void removeChannel(Channel*channel);
-private:
-    void fillActiveChannels(int numEvents,ChannelList*activeChannels) const;    
-    inline void assertInLoopThread(){ownerLoop_->assertInLoopThread();}
-    void update(int op, Channel* channel);
-    const char* opToString(int op);
+ private:
+  void fillActiveChannels(int numEvents,
+                          ChannelList* activeChannels) const;
+
+  typedef std::vector<struct pollfd> PollFdList;
+  typedef std::map<int, Channel*> ChannelMap;
+
+  EventLoop* ownerLoop_;
+  PollFdList pollfds_;
+  ChannelMap channels_;
 };
+
+
 

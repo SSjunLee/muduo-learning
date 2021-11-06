@@ -132,7 +132,7 @@ CMakeFiles/app.dir/Timer.cc.o
 CMakeFiles/app.dir/Timestamp.cc.o
  /home/ljn/文档/jnserver/Timestamp.cc
  /home/ljn/文档/jnserver/Timestamp.h
-CMakeFiles/app.dir/test10.cc.o
+CMakeFiles/app.dir/test11.cc.o
  /home/ljn/文档/jnserver/Buffer.h
  /home/ljn/文档/jnserver/Channel.h
  /home/ljn/文档/jnserver/EventLoop.h
@@ -145,4 +145,4 @@ CMakeFiles/app.dir/test10.cc.o
  /home/ljn/文档/jnserver/Timestamp.h
  /home/ljn/文档/jnserver/Type.h
  /home/ljn/文档/jnserver/nocopyable.h
- /home/ljn/文档/jnserver/test10.cc
+ /home/ljn/文档/jnserver/test11.cc

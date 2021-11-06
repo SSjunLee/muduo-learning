@@ -13,6 +13,7 @@ public:
     void start();   
     void setConnectionCallback(const ConnectionCallback&cb){connectionCallback_ =cb;};
     void setMessageCallback(const MessageCallback&cb){meassageCallback = cb;};
+    void setWriteCompleteCallback(const WriteCompleteCallback&cb){writeCompleteCallback_ = cb;}
 
 private:
     void newConnection(int sockfd,const InetAddress& peerAddr);
@@ -25,6 +26,7 @@ private:
     std::unique_ptr<Acceptor> acceptor_;
     ConnectionCallback connectionCallback_;
     MessageCallback meassageCallback;
+    WriteCompleteCallback writeCompleteCallback_;
     bool started_;
     int nextConnId_;
     ConnectionMap connections_;
