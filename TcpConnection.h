@@ -20,10 +20,13 @@ public:
     void connectionDestroyed();
     bool connected() const { return state_ == kConnected; }
     const InetAddress &peerAddress() const { return peerAddr_; }
-
     const std::string &name() const { return name_; }
-
+    void send(const void*msg,size_t len);
+    void send(const std::string&msg);
+    void shutdown();
 private:
+    void sendInLoop(const std::string&msg);
+    void shutdownInLoop();
     void handleRead(Timestamp recieveTime);
     void handleWrite();
     void handleClose();
@@ -34,7 +37,8 @@ private:
     {
         kConnecting,
         kConnected,
-        kDisConnected
+        kDisConnected,
+        kDisConnecting
     };
     EventLoop *loop_;
     std::string name_;
@@ -43,7 +47,8 @@ private:
     std::unique_ptr<Channel> channel_;
     InetAddress localAddr_;
     InetAddress peerAddr_;
-    Buffer inputbuffer_;
+    Buffer inputBuffer_;
+    Buffer outputBuffer_;
 
     ConnectionCallback connectionCallback_;
     MessageCallback messageCallback_;

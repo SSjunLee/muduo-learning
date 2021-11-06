@@ -128,3 +128,12 @@ int sockets::getSocketError(int fd){
     }
 
 }
+
+void sockets::shutdownWrite(int fd)
+{   //关闭tcp连接写这一端
+    int ret = ::shutdown(fd,SHUT_WR);
+    if(ret<0)
+    {
+        LOG_ERROR<<"shutdownWrite()"<<ENDL;
+    }
+}

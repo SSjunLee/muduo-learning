@@ -48,6 +48,7 @@
         "queue": "cpp",
         "cstring": "cpp",
         "cstddef": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "string": "cpp"
     }
 }

@@ -13,6 +13,7 @@ public:
     void listen();
     int accept(InetAddress* perraddr);
     void setReusedAddr(bool on);
+    void shutdownWrite();
 private:
     int sockFd_;
   

@@ -14,21 +14,21 @@ TcpConnection::TcpConnection(EventLoop *loop, const std::string &name, int sockf
       channel_(new Channel(loop_, sockfd)),
       localAddr_(localAddr_),
       peerAddr_(peerAddr_),
-      inputbuffer_()
+      inputBuffer_(),
+      outputBuffer_()
 {
   LOG_DEBUG << "TcpConnetion create [" << name_ << "] at fd = " << sockfd << ENDL;
-  channel_->setReadCallback_(std::bind(&TcpConnection::handleRead, this,std::placeholders::_1));
+  channel_->setReadCallback_(std::bind(&TcpConnection::handleRead, this, std::placeholders::_1));
   //channel_->enableReading();
 }
-
 
 //如果对端关闭，则必须关闭连接，否则会一直read 0byte,poller会不停地触发读事件，导致忙轮询
 void TcpConnection::handleRead(Timestamp recieveTime)
 {
   int saveError = 0;
-  ssize_t n= inputbuffer_.readFd(channel_->fd(),&saveError);
+  ssize_t n = inputBuffer_.readFd(channel_->fd(), &saveError);
   if (n > 0)
-    messageCallback_(shared_from_this(), &inputbuffer_, recieveTime);
+    messageCallback_(shared_from_this(), &inputBuffer_, recieveTime);
   else if (n == 0)
   {
     handleClose();
@@ -36,15 +36,40 @@ void TcpConnection::handleRead(Timestamp recieveTime)
   else
   {
     errno = saveError;
-    LOG_ERROR<<"TcpConnection::handleRead";
+    LOG_ERROR << "TcpConnection::handleRead";
     handleError();
   }
 }
-void TcpConnection::handleWrite() {}
+void TcpConnection::handleWrite() {
+  loop_->assertInLoopThread();
+  //将缓冲区里的数据写出
+  if(channel_->isWriting())
+  {
+    ssize_t n = ::write(channel_->fd(),outputBuffer_.peek(),outputBuffer_.writeableBytes());
+    if(n > 0)
+    {
+       outputBuffer_.retrieve(n);
+       if(outputBuffer_.readableBytes() == 0){
+         channel_->disableWriting();
+         if(state_ == kDisConnecting)
+         {
+           shutdownInLoop();
+         }else{
+           LOG<<"write more data"<<ENDL;
+         }
+       }
+    }else {
+      LOG_ERROR<<"TcpConnection::handleWrite()";
+    }
+  }else{
+    LOG<<"connect is down,no more writing"<<ENDL;
+  }
+
+}
 void TcpConnection::handleClose()
 {
   loop_->assertInLoopThread();
-  LOG << "TcpConnection::handleClose() state = " << state_<<ENDL;
+  LOG << "TcpConnection::handleClose() state = " << state_ << ENDL;
   channel_->disableAll();
   closeCallback_(shared_from_this());
 }
@@ -52,8 +77,8 @@ void TcpConnection::handleClose()
 void TcpConnection::handleError()
 {
   int err = sockets::getSocketError(channel_->fd());
-  LOG_ERROR << "TcpConnection::handleError() [" << name_ << "] SO_ERROR = " 
-  << debugs::geterror(err) << ENDL;
+  LOG_ERROR << "TcpConnection::handleError() [" << name_ << "] SO_ERROR = "
+            << debugs::geterror(err) << ENDL;
 }
 
 TcpConnection::~TcpConnection()
@@ -78,4 +103,66 @@ void TcpConnection::connectionDestroyed()
   channel_->disableAll();
   connectionCallback_(shared_from_this());
   loop_->removeChannel(channel_.get());
+}
+
+void TcpConnection::send(const void*msg,size_t len){
+
+}
+void TcpConnection::send(const std::string&msg)
+{
+  if(state_ == kConnected)
+  {
+    if(loop_->isInLoopThread())
+    {
+       sendInLoop(msg);
+    }else 
+    {
+      loop_->runInLoop(std::bind(&TcpConnection::sendInLoop,shared_from_this(),msg));
+    }
+  }
+}
+
+void TcpConnection::sendInLoop(const std::string&msg){
+  loop_->assertInLoopThread();
+  ssize_t nwrote = 0;
+  //先尝试直接把msg的数据发送
+  if(!channel_->isWriting() && outputBuffer_.readableBytes() == 0)
+  {
+      nwrote = ::write(channel_->fd(),msg.data(),msg.size());
+      if(nwrote >=0)
+      {
+        if(static_cast<size_t>(nwrote) < msg.size())
+          LOG<<"I m going to write more data"<<ENDL;
+      }else{
+        nwrote = 0;
+        if(errno == EWOULDBLOCK)
+          LOG_ERROR<<"TcpConnection::sendInLoop"<<ENDL;
+      }
+  }
+  assert(nwrote>=0);
+  //如果没写完，则把没写完的append到缓冲区里，让outbuffer写
+  if(static_cast<size_t>(nwrote) < msg.size())
+  {
+    outputBuffer_.append(msg.data() + nwrote,msg.size()-nwrote);
+    if(!channel_->isWriting()){
+      channel_->enableWriting();
+    }
+  }
+
+}
+
+void TcpConnection::shutdown()
+{
+  if(state_ == kConnected)
+  {
+    state_ = kDisConnecting;
+    loop_->runInLoop(std::bind(&TcpConnection::shutdownInLoop,shared_from_this()));
+  }
+}
+
+void TcpConnection::shutdownInLoop(){
+  loop_->assertInLoopThread();
+  if(!channel_->isWriting()){
+    socket_->shutdownWrite();
+  }
 }

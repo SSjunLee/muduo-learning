@@ -19,7 +19,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/ljn/文档/jnserver/TimeQueue.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/TimeQueue.cc.o"
   "/home/ljn/文档/jnserver/Timer.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timer.cc.o"
   "/home/ljn/文档/jnserver/Timestamp.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/Timestamp.cc.o"
-  "/home/ljn/文档/jnserver/test9.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test9.cc.o"
+  "/home/ljn/文档/jnserver/test10.cc" "/home/ljn/文档/jnserver/build/CMakeFiles/app.dir/test10.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

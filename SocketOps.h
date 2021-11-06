@@ -41,4 +41,5 @@ namespace sockets
     void toHostPort(char*buf,size_t size,const struct sockaddr_in*addr);
     struct sockaddr_in getLocalAddr(int sockfd);
     int getSocketError(int fd);
+    void shutdownWrite(int fd);
 };

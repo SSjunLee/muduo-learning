@@ -16,7 +16,7 @@ public:
                writeIndex_(kCheapPrepend){};
     ~Buffer(){};
     ssize_t readFd(int fd, int *savedErrno);
-    size_t readableBytes() const { buffer_.size() - readIndex_; }
+    size_t readableBytes() const {return  writeIndex_ - readIndex_; }
     size_t writeableBytes() const { buffer_.size() - writeIndex_; }
     size_t prependableBytes() const { return readIndex_; } //已经读过的垃圾数据字节数
 
@@ -49,10 +49,10 @@ public:
         }
         assert(writeableBytes() >= len);
     }
-    void append(char *data, size_t len)
+    void append(const char *data, size_t len)
     {
         ensureWritableBytes(len);
-        std::copy(data, data + len, begin());
+        std::copy(data, data + len, beginWrite());
         writeIndex_+=len;
     }
     std::string retrieveAsString(){
@@ -60,16 +60,19 @@ public:
         retrieveAll();
         return res;
     }
+    const char* peek() const {return begin() + readIndex_; }
+    void retrieve(size_t n){
+        readIndex_+=n;
+    }
+    void retrieveAll(){
+        writeIndex_ = readIndex_ = kCheapPrepend;
+    }
 
 private:
     char *begin() { return &*buffer_.begin(); }
     const char *begin() const { return &*buffer_.begin(); }
     char *beginWrite() { return begin() + writeIndex_; }
     const char *beginWrite() const { return begin() + writeIndex_; }
-    const char* peek() const {return begin() + readIndex_; }
-    void retrieveAll(){
-        writeIndex_ = readIndex_ = kCheapPrepend;
-    }
 private:
     std::vector<char> buffer_;
     size_t readIndex_;
