@@ -61,6 +61,18 @@ CMakeFiles/app.dir/EventLoopThread.cc.o: ../Timestamp.h
 CMakeFiles/app.dir/EventLoopThread.cc.o: ../Type.h
 CMakeFiles/app.dir/EventLoopThread.cc.o: ../nocopyable.h
 
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../Channel.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../EventLoopThread.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../EventLoopThreadPool.cc
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../EventLoopThreadPool.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../Log.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../TimeQueue.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../TimerId.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../Timestamp.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../Type.h
+CMakeFiles/app.dir/EventLoopThreadPool.cc.o: ../nocopyable.h
+
 CMakeFiles/app.dir/InetAddress.cc.o: ../InetAddress.cc
 CMakeFiles/app.dir/InetAddress.cc.o: ../InetAddress.h
 CMakeFiles/app.dir/InetAddress.cc.o: ../SocketOps.h
@@ -99,6 +111,8 @@ CMakeFiles/app.dir/TcpServer.cc.o: ../Acceptor.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../Buffer.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../Channel.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../EventLoop.h
+CMakeFiles/app.dir/TcpServer.cc.o: ../EventLoopThread.h
+CMakeFiles/app.dir/TcpServer.cc.o: ../EventLoopThreadPool.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../InetAddress.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../Log.h
 CMakeFiles/app.dir/TcpServer.cc.o: ../Socket.h

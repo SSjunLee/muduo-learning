@@ -9,7 +9,7 @@
 #include "TimeQueue.h"
 #include "Type.h"
 class Epoller;
-class EventLoop:nocopyable
+class EventLoop : nocopyable
 {
 
 public:
@@ -19,13 +19,14 @@ public:
     EventLoop();
     ~EventLoop();
     void updateChannel(Channel *c);
-    void removeChannel(Channel*c);
+    void removeChannel(Channel *c);
 
     void quit();
     void loop();
     //检查当前执行代码的线程是否是EventLoop的主人
     void assertInLoopThread()
     {
+       //LOG<<"loopId = "<<threadId_<<"  "<<ENDL;
         if (!isInLoopThread())
             abortNotInLoopThread();
     };

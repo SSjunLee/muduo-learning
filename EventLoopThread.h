@@ -1,5 +1,5 @@
 #pragma once
-#include"Type.h"
+#include "nocopyable.h"
 #include<thread>
 #include<condition_variable>
 #include<mutex>

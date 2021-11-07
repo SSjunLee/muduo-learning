@@ -57,8 +57,8 @@ void TcpConnection::handleWrite()
       if (outputBuffer_.readableBytes() == 0)
       {
         channel_->disableWriting();
-        if(writeCompleteCallback_)
-          loop_->queueInLoop(std::bind(writeCompleteCallback_,shared_from_this()));
+        if (writeCompleteCallback_)
+          loop_->queueInLoop(std::bind(writeCompleteCallback_, shared_from_this()));
         if (state_ == kDisConnecting)
         {
           shutdownInLoop();
@@ -122,7 +122,7 @@ void TcpConnection::send(const void *msg, size_t len)
 {
 }
 void TcpConnection::send(const std::string &msg)
-{ 
+{
   //channel_->enableWriting();
   //return;
   if (state_ == kConnected)
@@ -150,6 +150,10 @@ void TcpConnection::sendInLoop(const std::string &msg)
     {
       if (static_cast<size_t>(nwrote) < msg.size())
         LOG << "I m going to write more data" << ENDL;
+      else if (writeCompleteCallback_)
+      {
+        loop_->queueInLoop(std::bind(writeCompleteCallback_, shared_from_this()));
+      }
     }
     else
     {

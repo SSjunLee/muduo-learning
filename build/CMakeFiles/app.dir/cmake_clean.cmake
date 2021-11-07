@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/app.dir/Epoller.cc.o"
   "CMakeFiles/app.dir/EventLoop.cc.o"
   "CMakeFiles/app.dir/EventLoopThread.cc.o"
+  "CMakeFiles/app.dir/EventLoopThreadPool.cc.o"
   "CMakeFiles/app.dir/InetAddress.cc.o"
   "CMakeFiles/app.dir/Log.cc.o"
   "CMakeFiles/app.dir/Socket.cc.o"

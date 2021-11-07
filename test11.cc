@@ -55,10 +55,11 @@ int main(int argc, char* argv[])
   std::fill(message1.begin(), message1.end(), 'A');
   std::fill(message2.begin(), message2.end(), 'B');
 
-  InetAddress listenAddr(9981);
+  InetAddress listenAddr(1234);
   EventLoop loop;
 
   TcpServer server(&loop, listenAddr);
+  server.setThreadNum(4);
   server.setConnectionCallback(onConnection);
   server.setMessageCallback(onMessage);
   server.start();

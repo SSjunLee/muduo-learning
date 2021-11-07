@@ -24,6 +24,7 @@ public:
     void send(const void*msg,size_t len);
     void send(const std::string&msg);
     void shutdown();
+    EventLoop* getLoop(){return loop_;}
 private:
     void sendInLoop(const std::string&msg);
     void shutdownInLoop();
